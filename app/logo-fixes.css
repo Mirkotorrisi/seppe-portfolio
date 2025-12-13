@@ -1,0 +1,113 @@
+/* Logo-specific fixes and enhancements */
+
+/* Ensure SVG logos render properly across browsers */
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.logo-container img {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Fix for Safari SVG rendering issues */
+.logo-container svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Ensure proper contrast in both themes */
+.logo-light-mode {
+  filter: brightness(0) saturate(100%);
+}
+
+.logo-dark-mode {
+  filter: brightness(0) invert(1) saturate(100%);
+}
+
+/* Gradient overlay for hover effects */
+.logo-gradient-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, rgb(6, 182, 212), rgb(59, 130, 246), rgb(99, 102, 241));
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.logo-container:hover .logo-gradient-overlay {
+  opacity: 1;
+}
+
+/* Responsive logo sizing */
+@media (max-width: 768px) {
+  .logo-container {
+    width: 80px;
+    height: 32px;
+  }
+}
+
+@media (min-width: 769px) {
+  .logo-container {
+    width: 100px;
+    height: 40px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .logo-container {
+    width: 120px;
+    height: 48px;
+  }
+}
+
+/* Fallback text logo styling */
+.logo-fallback {
+  font-family: "Satoshi-Bold", sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  user-select: none;
+}
+
+/* Ensure logo is always visible */
+.logo-container img,
+.logo-container svg {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Fix for potential z-index issues */
+.site-header .logo-container {
+  z-index: 10;
+  position: relative;
+}
+
+/* Smooth transitions for theme switching */
+.logo-container img {
+  transition: filter 0.3s ease, opacity 0.3s ease;
+}
+
+/* Preload hint for better performance */
+.logo-container::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  background-image: url("/logo_seppe.svg");
+  opacity: 0;
+  pointer-events: none;
+}

@@ -1,0 +1,408 @@
+/* Glass Neon Effects and Animations */
+
+/* Keyframes for neon pulse effect */
+@keyframes neonPulse {
+  0% {
+    box-shadow: 0 0 5px rgba(59, 130, 246, 0.5), 0 0 10px rgba(59, 130, 246, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.8), 0 0 30px rgba(59, 130, 246, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 5px rgba(59, 130, 246, 0.5), 0 0 10px rgba(59, 130, 246, 0.3);
+  }
+}
+
+@keyframes neonTextPulse {
+  0% {
+    text-shadow: 0 0 5px rgba(59, 130, 246, 0.5), 0 0 10px rgba(59, 130, 246, 0.3);
+  }
+  50% {
+    text-shadow: 0 0 10px rgba(59, 130, 246, 0.8), 0 0 20px rgba(59, 130, 246, 0.5);
+  }
+  100% {
+    text-shadow: 0 0 5px rgba(59, 130, 246, 0.5), 0 0 10px rgba(59, 130, 246, 0.3);
+  }
+}
+
+@keyframes neonBorderPulse {
+  0% {
+    border-color: rgba(59, 130, 246, 0.3);
+    box-shadow: 0 0 5px rgba(59, 130, 246, 0.3), inset 0 0 5px rgba(59, 130, 246, 0.1);
+  }
+  50% {
+    border-color: rgba(59, 130, 246, 0.7);
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.5), inset 0 0 10px rgba(59, 130, 246, 0.2);
+  }
+  100% {
+    border-color: rgba(59, 130, 246, 0.3);
+    box-shadow: 0 0 5px rgba(59, 130, 246, 0.3), inset 0 0 5px rgba(59, 130, 246, 0.1);
+  }
+}
+
+@keyframes neonGradientFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes neonFlicker {
+  0%,
+  19.999%,
+  22%,
+  62.999%,
+  64%,
+  64.999%,
+  70%,
+  100% {
+    opacity: 0.99;
+    filter: drop-shadow(0 0 10px rgba(6, 182, 212, 0.5));
+  }
+  20%,
+  21.999%,
+  63%,
+  63.999%,
+  65%,
+  69.999% {
+    opacity: 0.4;
+    filter: drop-shadow(0 0 5px rgba(6, 182, 212, 0.2));
+  }
+}
+
+/* Glass Neon Card */
+.glass-neon-card {
+  background: rgba(17, 17, 23, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  border-radius: 0.75rem;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  position: relative;
+  will-change: transform, box-shadow;
+}
+
+.light .glass-neon-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(6, 182, 212, 0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+}
+
+.glass-neon-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 0.75rem;
+  padding: 1px;
+  background: linear-gradient(130deg, rgba(59, 130, 246, 0.5), rgba(99, 102, 241, 0.5), rgba(139, 92, 246, 0.5));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.light .glass-neon-card::before {
+  background: linear-gradient(130deg, rgba(6, 182, 212, 0.3), rgba(59, 130, 246, 0.3), rgba(99, 102, 241, 0.3));
+}
+
+.glass-neon-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(6, 182, 212, 0.2);
+}
+
+.light .glass-neon-card:hover {
+  box-shadow: 0 10px 25px rgba(6, 182, 212, 0.15);
+}
+
+.glass-neon-card:hover::before {
+  opacity: 1;
+  animation: neonBorderPulse 2s infinite;
+}
+
+/* Glass Neon Button */
+.glass-neon-button {
+  position: relative;
+  padding: 0.75rem 1.5rem;
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  border-radius: 0.5rem;
+  color: white;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  overflow: hidden;
+}
+
+.light .glass-neon-button {
+  background: rgba(6, 182, 212, 0.05);
+  border: 1px solid rgba(6, 182, 212, 0.15);
+  color: hsl(var(--foreground));
+}
+
+.glass-neon-button:hover {
+  background: rgba(59, 130, 246, 0.2);
+  border-color: rgba(59, 130, 246, 0.4);
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
+}
+
+.light .glass-neon-button:hover {
+  background: rgba(6, 182, 212, 0.1);
+  border-color: rgba(6, 182, 212, 0.3);
+  box-shadow: 0 0 15px rgba(6, 182, 212, 0.3);
+}
+
+.glass-neon-button:active {
+  transform: translateY(1px);
+}
+
+.glass-neon-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Glass Neon Text */
+.glass-neon-text {
+  color: white;
+  text-shadow: 0 0 5px rgba(6, 182, 212, 0.5);
+  transition: text-shadow 0.3s ease;
+}
+
+.light .glass-neon-text {
+  color: hsl(var(--foreground));
+  text-shadow: 0 0 5px rgba(6, 182, 212, 0.3);
+}
+
+.glass-neon-text:hover {
+  text-shadow: 0 0 10px rgba(6, 182, 212, 0.8), 0 0 20px rgba(6, 182, 212, 0.4);
+}
+
+.light .glass-neon-text:hover {
+  text-shadow: 0 0 10px rgba(6, 182, 212, 0.6), 0 0 20px rgba(6, 182, 212, 0.3);
+}
+
+/* Animated Neon Gradient Text */
+.neon-gradient-text {
+  background: linear-gradient(
+    90deg,
+    rgb(6, 182, 212),
+    rgb(59, 130, 246),
+    rgb(99, 102, 241),
+    rgb(59, 130, 246),
+    rgb(6, 182, 212)
+  );
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: neonGradientFlow 3s linear infinite;
+  text-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
+}
+
+.light .neon-gradient-text {
+  text-shadow: 0 0 8px rgba(6, 182, 212, 0.2);
+}
+
+/* Neon Border */
+.neon-border {
+  position: relative;
+}
+
+.neon-border::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: linear-gradient(
+    90deg,
+    rgba(6, 182, 212, 0.7),
+    rgba(59, 130, 246, 0.7),
+    rgba(99, 102, 241, 0.7),
+    rgba(59, 130, 246, 0.7),
+    rgba(6, 182, 212, 0.7)
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: neonBorderPulse 2s infinite;
+  pointer-events: none;
+}
+
+.light .neon-border::after {
+  background: linear-gradient(130deg, rgba(6, 182, 212, 0.5), rgba(59, 130, 246, 0.5), rgba(99, 102, 241, 0.5));
+}
+
+/* Neon Highlight */
+.neon-highlight {
+  position: relative;
+  z-index: 1;
+}
+
+.neon-highlight::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  background: linear-gradient(
+    90deg,
+    rgba(6, 182, 212, 0.15),
+    rgba(59, 130, 246, 0.15),
+    rgba(99, 102, 241, 0.15),
+    rgba(59, 130, 246, 0.15),
+    rgba(6, 182, 212, 0.15)
+  );
+  border-radius: inherit;
+  z-index: -1;
+  filter: blur(10px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.light .neon-highlight::before {
+  background: linear-gradient(45deg, rgba(6, 182, 212, 0.1), rgba(59, 130, 246, 0.1), rgba(99, 102, 241, 0.1));
+}
+
+.neon-highlight:hover::before {
+  opacity: 1;
+}
+
+/* Neon Glow Effect */
+.neon-glow {
+  box-shadow: 0 0 10px rgba(6, 182, 212, 0.5), 0 0 20px rgba(6, 182, 212, 0.3);
+  animation: neonPulse 2s infinite;
+}
+
+.light .neon-glow {
+  box-shadow: 0 0 8px rgba(6, 182, 212, 0.4), 0 0 16px rgba(6, 182, 212, 0.2);
+}
+
+.neon-text-glow {
+  text-shadow: 0 0 5px rgba(6, 182, 212, 0.7), 0 0 10px rgba(6, 182, 212, 0.5);
+  animation: neonTextPulse 2s infinite;
+}
+
+.light .neon-text-glow {
+  text-shadow: 0 0 5px rgba(6, 182, 212, 0.5), 0 0 10px rgba(6, 182, 212, 0.3);
+}
+
+/* Neon Flicker Effect */
+.neon-flicker {
+  animation: neonFlicker 3s infinite alternate;
+}
+
+/* Glass Panel */
+.glass-panel {
+  background: rgba(17, 17, 23, 0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.75rem;
+}
+
+.light .glass-panel {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(6, 182, 212, 0.1);
+}
+
+/* Neon Divider */
+.neon-divider {
+  height: 1px;
+  background: linear-gradient(90deg, rgba(59, 130, 246, 0.1), rgba(59, 130, 246, 0.5) 50%, rgba(59, 130, 246, 0.1));
+  position: relative;
+}
+
+.light .neon-divider {
+  background: linear-gradient(90deg, rgba(6, 182, 212, 0.05), rgba(6, 182, 212, 0.3) 50%, rgba(6, 182, 212, 0.05));
+}
+
+.neon-divider::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(59, 130, 246, 0), rgba(59, 130, 246, 0.8) 50%, rgba(59, 130, 246, 0));
+  filter: blur(1px);
+}
+
+.light .neon-divider::after {
+  background: linear-gradient(90deg, rgba(6, 182, 212, 0), rgba(6, 182, 212, 0.5) 50%, rgba(6, 182, 212, 0));
+}
+
+/* Social Media Icons with Enhanced Neon Effect */
+.social-icon-neon {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  z-index: 1;
+}
+
+.social-icon-neon::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgb(6, 182, 212),
+    rgb(59, 130, 246),
+    rgb(99, 102, 241),
+    rgb(59, 130, 246),
+    rgb(6, 182, 212)
+  );
+  background-size: 200% auto;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.social-icon-neon:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(6, 182, 212, 0.7), 0 0 20px rgba(6, 182, 212, 0.5), 0 0 30px rgba(6, 182, 212, 0.3);
+}
+
+.light .social-icon-neon:hover {
+  box-shadow: 0 0 15px rgba(6, 182, 212, 0.6), 0 0 25px rgba(6, 182, 212, 0.4), 0 0 35px rgba(6, 182, 212, 0.2);
+}
+
+.social-icon-neon:hover::before {
+  opacity: 1;
+  animation: neonGradientFlow 3s linear infinite;
+}
+
+.social-icon-neon svg {
+  position: relative;
+  z-index: 2;
+  filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.3));
+  transition: all 0.3s ease;
+}
+
+.light .social-icon-neon svg {
+  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.2));
+}
+
+.social-icon-neon:hover svg {
+  filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.5));
+  transform: scale(1.1);
+}
+
+.light .social-icon-neon:hover svg {
+  filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.8));
+}
+
+/* Background styles for light mode */
+.light .bg-gradient-subtle {
+  background: linear-gradient(180deg, rgba(240, 249, 255, 0.8), rgba(224, 242, 254, 0.5));
+}

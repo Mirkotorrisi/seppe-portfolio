@@ -1,0 +1,521 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Satoshi Font */
+@font-face {
+  font-family: "Satoshi-Light";
+  src: url("/fonts/Satoshi-Light.woff2") format("woff2"), url("/fonts/Satoshi-Light.woff") format("woff");
+  font-weight: 300;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Satoshi-Regular";
+  src: url("/fonts/Satoshi-Regular.woff2") format("woff2"), url("/fonts/Satoshi-Regular.woff") format("woff");
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Satoshi-Medium";
+  src: url("/fonts/Satoshi-Medium.woff2") format("woff2"), url("/fonts/Satoshi-Medium.woff") format("woff");
+  font-weight: 500;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Satoshi-Bold";
+  src: url("/fonts/Satoshi-Bold.woff2") format("woff2"), url("/fonts/Satoshi-Bold.woff") format("woff");
+  font-weight: 700;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Satoshi-Black";
+  src: url("/fonts/Satoshi-Black.woff2") format("woff2"), url("/fonts/Satoshi-Black.woff") format("woff");
+  font-weight: 900;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Satoshi-Variable";
+  src: url("/fonts/Satoshi-Variable.woff2") format("woff2"), url("/fonts/Satoshi-Variable.woff") format("woff");
+  font-weight: 300 900;
+  font-display: swap;
+  font-style: normal;
+}
+
+/* Neon Animation Keyframes */
+@keyframes neonPulse {
+  0% {
+    box-shadow: 0 0 5px rgba(6, 182, 212, 0.5), 0 0 10px rgba(6, 182, 212, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(6, 182, 212, 0.7), 0 0 25px rgba(6, 182, 212, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 5px rgba(6, 182, 212, 0.5), 0 0 10px rgba(6, 182, 212, 0.3);
+  }
+}
+
+@keyframes neonTextPulse {
+  0% {
+    text-shadow: 0 0 5px rgba(6, 182, 212, 0.5), 0 0 10px rgba(6, 182, 212, 0.3);
+  }
+  50% {
+    text-shadow: 0 0 10px rgba(6, 182, 212, 0.7), 0 0 20px rgba(6, 182, 212, 0.5);
+  }
+  100% {
+    text-shadow: 0 0 5px rgba(6, 182, 212, 0.5), 0 0 10px rgba(6, 182, 212, 0.3);
+  }
+}
+
+@keyframes neonBorderPulse {
+  0% {
+    border-color: rgba(6, 182, 212, 0.5);
+    box-shadow: 0 0 5px rgba(6, 182, 212, 0.3), inset 0 0 5px rgba(6, 182, 212, 0.1);
+  }
+  50% {
+    border-color: rgba(6, 182, 212, 0.8);
+    box-shadow: 0 0 15px rgba(6, 182, 212, 0.5), inset 0 0 10px rgba(6, 182, 212, 0.2);
+  }
+  100% {
+    border-color: rgba(6, 182, 212, 0.5);
+    box-shadow: 0 0 5px rgba(6, 182, 212, 0.3), inset 0 0 5px rgba(6, 182, 212, 0.1);
+  }
+}
+
+@keyframes neonGradientFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes neonFlicker {
+  0%,
+  19.999%,
+  22%,
+  62.999%,
+  64%,
+  64.999%,
+  70%,
+  100% {
+    opacity: 0.99;
+    filter: drop-shadow(0 0 5px rgba(6, 182, 212, 0.7));
+  }
+  20%,
+  21.999%,
+  63%,
+  63.999%,
+  65%,
+  69.999% {
+    opacity: 0.4;
+    filter: drop-shadow(0 0 2px rgba(6, 182, 212, 0.4));
+  }
+}
+
+@layer base {
+  :root {
+    /* Dark mode colors - will be used in light mode */
+    --color-blue: 59, 130, 246; /* blue-500 */
+    --color-indigo: 99, 102, 241; /* indigo-500 */
+    --color-purple: 139, 92, 246; /* purple-500 */
+    --color-light-blue: 147, 197, 253; /* blue-300 */
+    --color-light-indigo: 165, 180, 252; /* indigo-300 */
+    --color-light-purple: 216, 180, 254; /* purple-300 */
+
+    /* Light theme defaults */
+    --background: 210 40% 98%;
+    --foreground: 222 47% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+    --primary: 217 91% 60%; /* Blue-based primary */
+    --primary-foreground: 210 40% 98%;
+    --secondary: 244 75% 67%; /* Indigo-based secondary */
+    --secondary-foreground: 210 40% 98%;
+    --muted: 210 40% 94%;
+    --muted-foreground: 222 47% 30%;
+    --accent: 217 91% 60%; /* Blue-based accent */
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214 32% 86%;
+    --input: 214 32% 86%;
+    --ring: 217 91% 60%; /* Blue-based ring */
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    /* Dark theme colors */
+    --background: 240 10% 5%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 8%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 8%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 217 91% 60%; /* Blue-based primary */
+    --primary-foreground: 0 0% 98%;
+    --secondary: 244 75% 67%; /* Indigo-based secondary */
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 10% 14%;
+    --muted-foreground: 240 5% 75%;
+    --accent: 217 91% 60%; /* Blue-based accent */
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 10% 14%;
+    --input: 240 10% 14%;
+    --ring: 217 91% 60%; /* Blue-based ring */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    font-family: "Satoshi-Variable", sans-serif;
+    letter-spacing: -0.01em;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    letter-spacing: -0.03em;
+    font-weight: 700;
+    line-height: 1.1;
+  }
+  p {
+    line-height: 1.6;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(6, 182, 212, 0.3);
+  border-radius: 4px;
+  box-shadow: inset 0 0 3px rgba(6, 182, 212, 0.5);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(6, 182, 212, 0.5);
+  box-shadow: inset 0 0 5px rgba(6, 182, 212, 0.7);
+}
+
+/* Transitions */
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+/* Font smoothing */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Gradient text */
+.gradient-text {
+  background-image: linear-gradient(
+    90deg,
+    rgb(6, 182, 212),
+    rgb(59, 130, 246),
+    rgb(99, 102, 241),
+    rgb(59, 130, 246),
+    rgb(6, 182, 212)
+  );
+  background-size: 200% auto;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+}
+
+/* Neon gradient text */
+.neon-gradient-text {
+  background: linear-gradient(
+    90deg,
+    rgb(6, 182, 212),
+    rgb(59, 130, 246),
+    rgb(99, 102, 241),
+    rgb(59, 130, 246),
+    rgb(6, 182, 212)
+  );
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: neonGradientFlow 3s ease infinite;
+  text-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+}
+
+/* Background size utility for gradient animations */
+.bg-size-200 {
+  background-size: 200% 100%;
+}
+
+/* Heading styles */
+.heading-xl {
+  font-size: 2.25rem;
+  line-height: 1.1;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+@media (min-width: 768px) {
+  .heading-xl {
+    font-size: 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .heading-xl {
+    font-size: 3.75rem;
+  }
+}
+
+.heading-lg {
+  font-size: 1.875rem;
+  line-height: 1.1;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+@media (min-width: 768px) {
+  .heading-lg {
+    font-size: 2.25rem;
+  }
+}
+
+.heading-md {
+  font-size: 1.5rem;
+  line-height: 1.1;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+@media (min-width: 768px) {
+  .heading-md {
+    font-size: 1.875rem;
+  }
+}
+
+.heading-sm {
+}
+
+/* Caveat font */
+.font-caveat {
+  font-family: "Caveat", cursive;
+}
+
+/* Light mode adjustments for glass and neon effects */
+.light .glass-neon-card {
+  background: rgba(248, 250, 252, 0.8);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(6, 182, 212, 0.15);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.light .glass-neon-text {
+  color: hsl(var(--foreground));
+  text-shadow: 0 0 5px rgba(6, 182, 212, 0.3);
+}
+
+.light .neon-border::after {
+  background: linear-gradient(130deg, rgba(6, 182, 212, 0.5), rgba(59, 130, 246, 0.5), rgba(99, 102, 241, 0.5));
+}
+
+.light .neon-divider {
+  background: linear-gradient(90deg, rgba(6, 182, 212, 0.05), rgba(6, 182, 212, 0.3) 50%, rgba(6, 182, 212, 0.05));
+}
+
+.light .neon-divider::after {
+  background: linear-gradient(90deg, rgba(6, 182, 212, 0), rgba(6, 182, 212, 0.5) 50%, rgba(6, 182, 212, 0));
+}
+
+.light .social-icon-neon:hover {
+  box-shadow: 0 0 10px rgba(6, 182, 212, 0.5), 0 0 20px rgba(6, 182, 212, 0.3);
+}
+
+.light .neon-glow {
+  box-shadow: 0 0 8px rgba(6, 182, 212, 0.4), 0 0 16px rgba(6, 182, 212, 0.2);
+}
+
+.light .glass-panel {
+  background: rgba(248, 250, 252, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(6, 182, 212, 0.15);
+}
+
+/* Background gradient for light mode */
+.light .bg-gradient-subtle {
+  background: transparent;
+  position: relative;
+}
+
+.light .bg-gradient-subtle::before {
+  display: none;
+}
+
+/* Unified background for light mode */
+.light .bg-unified {
+  background: linear-gradient(
+    to bottom right,
+    rgba(224, 242, 254, 0.9),
+    rgba(219, 234, 254, 0.9),
+    rgba(224, 231, 255, 0.9)
+  );
+}
+
+/* Enhanced light theme neon text effect */
+.light .neon-gradient-text {
+  text-shadow: 0 0 12px rgba(6, 182, 212, 0.3);
+}
+
+/* Enhanced light theme gradient text */
+.light .gradient-text {
+  background-image: linear-gradient(
+    90deg,
+    rgb(6, 182, 212),
+    rgb(59, 130, 246),
+    rgb(99, 102, 241),
+    rgb(59, 130, 246),
+    rgb(6, 182, 212)
+  );
+  text-shadow: 0 0 15px rgba(6, 182, 212, 0.4);
+}
+
+/* Smooth section transitions for light mode */
+.light .section-transition {
+  position: relative;
+}
+
+.light .section-transition::after {
+  content: "";
+  position: absolute;
+  top: -6rem;
+  left: 0;
+  right: 0;
+  height: 12rem;
+  background: linear-gradient(to bottom, transparent, rgba(240, 249, 255, 0.8));
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Enhanced section transitions */
+.light .section-refined {
+  background: transparent;
+  position: relative;
+}
+
+/* Smooth gradient transitions between sections */
+.light .section-refined + .section-refined {
+  background-blend-mode: overlay;
+}
+
+/* Eliminate banding in gradients */
+.light .bg-gradient-to-b,
+.light .bg-gradient-to-tr {
+  --gradient-stops: 32;
+  background-size: 100% 101%; /* Slight oversize to prevent edge gaps */
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Smoother scroll behavior */
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Updated Light Theme Background */
+.light-background {
+  background-color: #f8fafc !important; /* Using a very light blue-gray instead of pure white */
+}
+
+/* Consistent section spacing */
+.section-spacing {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+@media (min-width: 768px) {
+  .section-spacing {
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-spacing {
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+  }
+}
+
+/* First section after header needs extra top margin to account for fixed header */
+.first-section {
+  padding-top: 6rem;
+}
+
+@media (min-width: 768px) {
+  .first-section {
+    padding-top: 7rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .first-section {
+    padding-top: 8rem;
+  }
+}
+
+/* Light mode text colors */
+.light h1,
+.light h2,
+.light h3,
+.light h4,
+.light h5,
+.light h6 {
+  color: #1f2937; /* text-gray-800 equivalent */
+}
+
+/* Remove section breaks in light mode */
+.light .section + .section {
+  border-top: none;
+}
+
+/* Ensure content flows seamlessly between sections */
+.light .section {
+  position: relative;
+  background: transparent;
+}

@@ -1,35 +1,41 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import Image from "next/image"
-import { SiteHeader } from "@/components/site-header"
-import { Download, Briefcase, Code, Palette, Lightbulb, Cpu } from "lucide-react"
-import { StreamlinedBackground } from "@/components/ui-elements/streamlined-background"
-import { SectionPreTitle } from "@/components/ui-elements/section-pre-title"
-import { ContactSection } from "@/components/contact-section"
-import { useEffect, useState } from "react"
-import { useTheme } from "next-themes"
+import { motion } from "framer-motion";
+import Image from "next/image";
+import { SiteHeader } from "@/components/site-header";
+import {
+  Download,
+  Briefcase,
+  Code,
+  Palette,
+  Lightbulb,
+  Cpu,
+} from "lucide-react";
+import { StreamlinedBackground } from "@/components/ui-elements/streamlined-background";
+import { SectionPreTitle } from "@/components/ui-elements/section-pre-title";
+import { ContactSection } from "@/components/contact-section";
+import { useEffect, useState } from "react";
+import { useTheme } from "next-themes";
 
 export default function AboutPage() {
-  const [imageLoaded, setImageLoaded] = useState(false)
-  const [imageError, setImageError] = useState(false)
-  const { theme } = useTheme()
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const [imageError, setImageError] = useState(false);
+  const { theme } = useTheme();
 
   const skills = [
     { name: "UX/UI Design", icon: <Palette className="h-5 w-5" /> },
     { name: "Product Strategy", icon: <Briefcase className="h-5 w-5" /> },
     { name: "Prototyping", icon: <Code className="h-5 w-5" /> },
     { name: "User Research", icon: <Lightbulb className="h-5 w-5" /> },
-    { name: "AI Integration", icon: <Cpu className="h-5 w-5" /> },
-  ]
+  ];
 
   useEffect(() => {
-    console.log("Loading profile image from blob URL")
+    console.log("Loading profile image from blob URL");
     // Scroll to top on mount
-    if (typeof window !== 'undefined') {
-      window.scrollTo({ top: 0, behavior: "instant" })
+    if (typeof window !== "undefined") {
+      window.scrollTo({ top: 0, behavior: "instant" });
     }
-  }, [])
+  }, []);
 
   return (
     <main className="relative flex min-h-screen flex-col">
@@ -48,11 +54,21 @@ export default function AboutPage() {
                 className="text-left"
               >
                 <SectionPreTitle>Hello there</SectionPreTitle>
-                <h1 className={`heading-xl mb-6 ${theme === "light" ? "text-gray-800" : "text-white"}`}>About Me</h1>
+                <h1
+                  className={`heading-xl mb-6 ${
+                    theme === "light" ? "text-gray-800" : "text-white"
+                  }`}
+                >
+                  About Me
+                </h1>
                 <p className="text-lg text-muted-foreground mb-8">
-                  I'm a Digital Product Designer with a passion for creating intuitive, user-centered experiences that
-                  leverage the power of AI to solve complex problems. My approach combines creative thinking with
-                  technical expertise to deliver solutions that exceed expectations.
+                  I am a Digital Product Designer focused on creating intuitive,
+                  human-centered experiences that bridge the gap between people
+                  and technology. My approach combines strategic design with
+                  technical expertise to transform complex challenges into
+                  seamless solutions. I don’t just design interfaces; I build
+                  digital products that empower users and deliver measurable
+                  value for businesses.
                 </p>
 
                 <button
@@ -94,17 +110,21 @@ export default function AboutPage() {
                     alt="Seppe"
                     fill
                     sizes="(max-width: 768px) 256px, 320px"
-                    className={`object-cover transition-opacity duration-300 ${imageLoaded ? "opacity-100" : "opacity-0"}`}
+                    className={`object-cover transition-opacity duration-300 ${
+                      imageLoaded ? "opacity-100" : "opacity-0"
+                    }`}
                     priority
                     onLoad={() => setImageLoaded(true)}
                     onError={() => {
-                      console.error("Failed to load profile image")
-                      setImageError(true)
+                      console.error("Failed to load profile image");
+                      setImageError(true);
                     }}
                   />
 
                   {/* Placeholder image as a backup */}
-                  {!imageLoaded && !imageError && <div className="absolute inset-0 bg-gray-700"></div>}
+                  {!imageLoaded && !imageError && (
+                    <div className="absolute inset-0 bg-gray-700"></div>
+                  )}
                 </div>
               </motion.div>
             </div>
@@ -122,13 +142,27 @@ export default function AboutPage() {
               className="max-w3xl mx-auto text-center"
             >
               <SectionPreTitle>Professional journey</SectionPreTitle>
-              <h2 className={`heading-lg mb-4 ${theme === "light" ? "text-gray-800" : "text-white"}`}>Currently at</h2>
-              <p className={`text-2xl font-medium mb-6 ${theme === "light" ? "text-gray-800" : "text-white"}`}>
+              <h2
+                className={`heading-lg mb-4 ${
+                  theme === "light" ? "text-gray-800" : "text-white"
+                }`}
+              >
+                Currently at
+              </h2>
+              <p
+                className={`text-2xl font-medium mb-6 ${
+                  theme === "light" ? "text-gray-800" : "text-white"
+                }`}
+              >
                 CreationDose
               </p>
               <p className="text-lg text-muted-foreground">
-                Leading design initiatives for AI-powered products that enhance user experiences across various
-                industries, from healthcare to finance.
+                Driving the UI/UX design for the Vidoser ecosystem, where I
+                focus on developing AI-powered tools for the Creator Economy. I
+                manage the design process from concept to delivery, ensuring
+                technical requirements are translated into intuitive,
+                human-centered experiences while maintaining high quality
+                standards across the platform.
               </p>
             </motion.div>
           </div>
@@ -144,13 +178,18 @@ export default function AboutPage() {
               transition={{ duration: 0.5 }}
               className="max-w-3xl mx-auto text-center mb-16"
             >
-              <SectionPreTitle>My philosophy</SectionPreTitle>
-              <h2 className={`heading-lg mb-4 ${theme === "light" ? "text-gray-800" : "text-white"}`}>
-                AI & Design Approach
+              <SectionPreTitle>How I Work</SectionPreTitle>
+              <h2
+                className={`heading-lg mb-4 ${
+                  theme === "light" ? "text-gray-800" : "text-white"
+                }`}
+              >
+                Strategic UI/UX
               </h2>
               <p className="text-lg text-muted-foreground">
-                Creating intelligent, human-centered experiences that leverage the power of AI while maintaining ethical
-                standards.
+                I design interfaces that don't just look good, but perform. My
+                focus is on conversion, user retention, and creating intuitive
+                flows that reduce friction and accelerate business growth.
               </p>
             </motion.div>
 
@@ -162,13 +201,18 @@ export default function AboutPage() {
                 transition={{ duration: 0.5, delay: 0.1 }}
                 className="glass-neon-card p-6"
               >
-                <h3 className={`text-xl font-bold mb-4 ${theme === "light" ? "text-gray-800" : ""}`}>
-                  Human-Centered AI
+                <h3
+                  className={`text-xl font-bold mb-4 ${
+                    theme === "light" ? "text-gray-800" : ""
+                  }`}
+                >
+                  Tech Integration & AI
                 </h3>
                 <p className="text-muted-foreground">
-                  I believe AI should enhance human capabilities, not replace them. My design approach focuses on
-                  creating symbiotic relationships between users and AI systems, where technology adapts to human needs
-                  and preferences.
+                  I specialize in making complex technology accessible. I
+                  integrate AI and advanced functionalities to automate tasks
+                  and empower users, turning sophisticated technical
+                  capabilities into easy-to-use digital products.
                 </p>
               </motion.div>
 
@@ -179,13 +223,18 @@ export default function AboutPage() {
                 transition={{ duration: 0.5, delay: 0.2 }}
                 className="glass-neon-card p-6"
               >
-                <h3 className={`text-xl font-bold mb-4 ${theme === "light" ? "text-gray-800" : ""}`}>
-                  Ethical Design Principles
+                <h3
+                  className={`text-xl font-bold mb-4 ${
+                    theme === "light" ? "text-gray-800" : ""
+                  }`}
+                >
+                  Efficiency & Scalability
                 </h3>
                 <p className="text-muted-foreground">
-                  I prioritize transparency, fairness, and inclusivity in all my AI-driven designs. This means creating
-                  interfaces that clearly communicate how AI is being used and ensuring that systems work equitably for
-                  all users.
+                  I build design systems and scalable architectures. This
+                  ensures a consistent brand identity across all platforms while
+                  speeding up the development process and reducing long-term
+                  maintenance costs.
                 </p>
               </motion.div>
 
@@ -196,30 +245,18 @@ export default function AboutPage() {
                 transition={{ duration: 0.5, delay: 0.3 }}
                 className="glass-neon-card p-6"
               >
-                <h3 className={`text-xl font-bold mb-4 ${theme === "light" ? "text-gray-800" : ""}`}>
-                  Iterative Prototyping
+                <h3
+                  className={`text-xl font-bold mb-4 ${
+                    theme === "light" ? "text-gray-800" : ""
+                  }`}
+                >
+                  End-to-End Execution
                 </h3>
                 <p className="text-muted-foreground">
-                  AI systems require continuous refinement. I employ rapid prototyping and testing methodologies to
-                  gather user feedback early and often, allowing for iterative improvements that enhance the
-                  intelligence and usability of the final product.
-                </p>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.4 }}
-                className="glass-neon-card p-6"
-              >
-                <h3 className={`text-xl font-bold mb-4 ${theme === "light" ? "text-gray-800" : ""}`}>
-                  Cross-Disciplinary Collaboration
-                </h3>
-                <p className="text-muted-foreground">
-                  Effective AI design requires collaboration between designers, data scientists, engineers, and domain
-                  experts. I thrive in multidisciplinary teams, bridging the gap between technical capabilities and user
-                  needs.
+                  I bridge the gap between design and code. By working closely
+                  with developers and stakeholders, I ensure the final product
+                  is technically sound, pixel-perfect, and fully aligned with
+                  the initial business goals.
                 </p>
               </motion.div>
             </div>
@@ -237,12 +274,16 @@ export default function AboutPage() {
               className="max-w-3xl mx-auto text-center mb-16"
             >
               <SectionPreTitle>My expertise</SectionPreTitle>
-              <h2 className={`heading-lg mb-4 ${theme === "light" ? "text-gray-800" : "text-white"}`}>
+              <h2
+                className={`heading-lg mb-4 ${
+                  theme === "light" ? "text-gray-800" : "text-white"
+                }`}
+              >
                 Skills & Capabilities
               </h2>
               <p className="text-lg text-muted-foreground">
-                A combination of design expertise and technical knowledge that enables me to create exceptional digital
-                experiences.
+                A combination of design expertise and technical knowledge that
+                enables me to create exceptional digital experiences.
               </p>
             </motion.div>
 
@@ -262,7 +303,13 @@ export default function AboutPage() {
                   <div className="mb-4 rounded-full bg-gradient-to-br from-cyan-500/10 to-indigo-500/10 p-3 text-cyan-400 mx-auto w-12 h-12 flex items-center justify-center">
                     {skill.icon}
                   </div>
-                  <h3 className={`text-lg font-medium ${theme === "light" ? "text-gray-800" : ""}`}>{skill.name}</h3>
+                  <h3
+                    className={`text-lg font-medium ${
+                      theme === "light" ? "text-gray-800" : ""
+                    }`}
+                  >
+                    {skill.name}
+                  </h3>
                 </motion.div>
               ))}
             </div>
@@ -299,5 +346,5 @@ export default function AboutPage() {
         }
       `}</style>
     </main>
-  )
+  );
 }

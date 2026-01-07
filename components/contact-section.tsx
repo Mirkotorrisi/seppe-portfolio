@@ -1,36 +1,36 @@
-"use client"
+"use client";
 
-import type React from "react"
-import { useState } from "react"
-import { motion } from "framer-motion"
-import { Mail, Phone, MapPin, Send } from "lucide-react"
-import { SectionPreTitle } from "@/components/ui-elements/section-pre-title"
-import { useTheme } from "next-themes"
+import type React from "react";
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { SectionPreTitle } from "@/components/ui-elements/section-pre-title";
+import { useTheme } from "next-themes";
 
 export function ContactSection() {
-  const { theme } = useTheme()
-  const [email, setEmail] = useState("")
-  const [message, setMessage] = useState("")
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [isSubmitted, setIsSubmitted] = useState(false)
+  const { theme } = useTheme();
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
+    e.preventDefault();
+    setIsSubmitting(true);
 
     // Simulate form submission
     setTimeout(() => {
-      setIsSubmitting(false)
-      setIsSubmitted(true)
-      setEmail("")
-      setMessage("")
+      setIsSubmitting(false);
+      setIsSubmitted(true);
+      setEmail("");
+      setMessage("");
 
       // Reset success message after 3 seconds
       setTimeout(() => {
-        setIsSubmitted(false)
-      }, 3000)
-    }, 1000)
-  }
+        setIsSubmitted(false);
+      }, 3000);
+    }, 1000);
+  };
 
   return (
     <section id="contact" className="section-spacing">
@@ -45,7 +45,8 @@ export function ContactSection() {
           <SectionPreTitle>Ready to collaborate</SectionPreTitle>
           <h2 className="heading-lg mb-4">Get in touch</h2>
           <p className="text-lg text-muted-foreground">
-            Have a project in mind or want to discuss collaboration opportunities? I'd love to hear from you.
+            Have a project in mind or want to discuss collaboration
+            opportunities? I'd love to hear from you.
           </p>
         </motion.div>
 
@@ -58,14 +59,17 @@ export function ContactSection() {
           >
             <h3 className="text-xl font-bold mb-6">Contact Information</h3>
             <p className="text-muted-foreground mb-8">
-              Feel free to reach out through the form or connect with me directly through these channels.
+              Feel free to reach out through the form or connect with me
+              directly through these channels.
             </p>
 
             <div className="space-y-6 mb-8">
               <div className="flex items-center gap-4">
                 <div
                   className={`w-10 h-10 rounded-full flex items-center justify-center relative overflow-hidden transition-all group ${
-                    theme === "light" ? "bg-white/70 backdrop-blur-sm shadow-sm" : "bg-white/5"
+                    theme === "light"
+                      ? "bg-white/70 backdrop-blur-sm shadow-sm"
+                      : "bg-white/5"
                   }`}
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -77,14 +81,16 @@ export function ContactSection() {
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">Email</p>
-                  <p className="text-base font-medium">hello@seppe.design</p>
+                  <p className="text-base font-medium">info@seppe.it</p>
                 </div>
               </div>
 
               <div className="flex items-center gap-4">
                 <div
                   className={`w-10 h-10 rounded-full flex items-center justify-center relative overflow-hidden transition-all group ${
-                    theme === "light" ? "bg-white/70 backdrop-blur-sm shadow-sm" : "bg-white/5"
+                    theme === "light"
+                      ? "bg-white/70 backdrop-blur-sm shadow-sm"
+                      : "bg-white/5"
                   }`}
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -96,14 +102,16 @@ export function ContactSection() {
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">Phone</p>
-                  <p className="text-base font-medium">+1 (555) 123-4567</p>
+                  <p className="text-base font-medium">+39 3881813571</p>
                 </div>
               </div>
 
               <div className="flex items-center gap-4">
                 <div
                   className={`w-10 h-10 rounded-full flex items-center justify-center relative overflow-hidden transition-all group ${
-                    theme === "light" ? "bg-white/70 backdrop-blur-sm shadow-sm" : "bg-white/5"
+                    theme === "light"
+                      ? "bg-white/70 backdrop-blur-sm shadow-sm"
+                      : "bg-white/5"
                   }`}
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -115,7 +123,7 @@ export function ContactSection() {
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">Location</p>
-                  <p className="text-base font-medium">San Francisco, CA</p>
+                  <p className="text-base font-medium">Catania, CT</p>
                 </div>
               </div>
             </div>
@@ -127,13 +135,19 @@ export function ContactSection() {
               <a
                 href="#"
                 className={`w-10 h-10 rounded-full flex items-center justify-center relative overflow-hidden transition-all group ${
-                  theme === "light" ? "bg-white/70 backdrop-blur-sm shadow-sm" : "bg-white/5"
+                  theme === "light"
+                    ? "bg-white/70 backdrop-blur-sm shadow-sm"
+                    : "bg-white/5"
                 }`}
                 aria-label="Facebook"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <svg
-                  className={`h-5 w-5 ${theme === "light" ? "text-black group-hover:text-white" : "text-white"} relative z-10`}
+                  className={`h-5 w-5 ${
+                    theme === "light"
+                      ? "text-black group-hover:text-white"
+                      : "text-white"
+                  } relative z-10`}
                   fill="currentColor"
                   viewBox="0 0 24 24"
                   aria-hidden="true"
@@ -148,13 +162,19 @@ export function ContactSection() {
               <a
                 href="#"
                 className={`w-10 h-10 rounded-full flex items-center justify-center relative overflow-hidden transition-all group ${
-                  theme === "light" ? "bg-white/70 backdrop-blur-sm shadow-sm" : "bg-white/5"
+                  theme === "light"
+                    ? "bg-white/70 backdrop-blur-sm shadow-sm"
+                    : "bg-white/5"
                 }`}
                 aria-label="Instagram"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <svg
-                  className={`h-5 w-5 ${theme === "light" ? "text-black group-hover:text-white" : "text-white"} relative z-10`}
+                  className={`h-5 w-5 ${
+                    theme === "light"
+                      ? "text-black group-hover:text-white"
+                      : "text-white"
+                  } relative z-10`}
                   fill="currentColor"
                   viewBox="0 0 24 24"
                   aria-hidden="true"
@@ -169,13 +189,19 @@ export function ContactSection() {
               <a
                 href="#"
                 className={`w-10 h-10 rounded-full flex items-center justify-center relative overflow-hidden transition-all group ${
-                  theme === "light" ? "bg-white/70 backdrop-blur-sm shadow-sm" : "bg-white/5"
+                  theme === "light"
+                    ? "bg-white/70 backdrop-blur-sm shadow-sm"
+                    : "bg-white/5"
                 }`}
                 aria-label="LinkedIn"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <svg
-                  className={`h-5 w-5 ${theme === "light" ? "text-black group-hover:text-white" : "text-white"} relative z-10`}
+                  className={`h-5 w-5 ${
+                    theme === "light"
+                      ? "text-black group-hover:text-white"
+                      : "text-white"
+                  } relative z-10`}
                   fill="currentColor"
                   viewBox="0 0 24 24"
                   aria-hidden="true"
@@ -196,7 +222,10 @@ export function ContactSection() {
             <h3 className="text-xl font-bold mb-6">Send Me a Message</h3>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="relative">
-                <label htmlFor="email" className="block text-sm font-medium text-muted-foreground mb-2">
+                <label
+                  htmlFor="email"
+                  className="block text-sm font-medium text-muted-foreground mb-2"
+                >
                   Your Email
                 </label>
                 <input
@@ -215,7 +244,10 @@ export function ContactSection() {
                 />
               </div>
               <div className="relative">
-                <label htmlFor="message" className="block text-sm font-medium text-muted-foreground mb-2">
+                <label
+                  htmlFor="message"
+                  className="block text-sm font-medium text-muted-foreground mb-2"
+                >
                   Your Message
                 </label>
                 <textarea
@@ -275,7 +307,9 @@ export function ContactSection() {
               </button>
               {isSubmitted && (
                 <div className="mt-4 p-3 bg-cyan-500/10 border border-cyan-500/20 rounded-lg text-center">
-                  <p className="text-cyan-400">Message sent successfully! I'll get back to you soon.</p>
+                  <p className="text-cyan-400">
+                    Message sent successfully! I'll get back to you soon.
+                  </p>
                 </div>
               )}
             </form>
@@ -307,5 +341,5 @@ export function ContactSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }

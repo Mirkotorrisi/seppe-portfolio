@@ -1,136 +1,113 @@
 export interface Project {
-  id: string
-  title: string
-  description: string
-  category: string
-  coverImage: string
-  images: string[]
-  client: string
-  year: string
-  role: string
-  tools: string[]
-  aiTools: string[]
-  challenge: string
-  solution: string
-  outcome: string
-  process: string
-  type: "work" | "personal" // Added type field for filtering
+  id: string;
+  title: string;
+  description: string;
+  category: string;
+  coverImage: string;
+  images: string[];
+  client: string;
+  year: string;
+  role: string;
+  tools: string[];
+  aiTools: string[];
+  challenge: string;
+  solution: string;
+  outcome: string;
+  process: string;
+  type: "work" | "personal"; // Added type field for filtering
 }
 
 export const projects: Project[] = [
   {
-    id: "ai-powered-healthcare-dashboard",
-    title: "AI-Powered Healthcare Dashboard",
+    id: "vidoser-app",
+    title: "Vidoser - AI Creator tools",
     description:
-      "A comprehensive healthcare analytics platform that leverages AI to provide actionable insights for medical professionals.",
-    category: "Healthcare",
-    coverImage: "/healthcare-dashboard-analytics.jpg",
-    images: ["/healthcare-dashboard.jpg", "/healthcare-analytics.jpg"],
-    client: "MedTech Innovations",
-    year: "2023",
-    role: "Lead Product Designer",
-    tools: ["Figma", "Framer", "Adobe Creative Suite", "Miro"],
-    aiTools: ["TensorFlow", "PyTorch", "OpenAI API", "Hugging Face"],
-    challenge:
-      "Healthcare professionals were struggling with data overload, making it difficult to identify critical patient insights in a timely manner.",
-    solution:
-      "We designed an intuitive dashboard that uses AI to analyze patient data and surface the most relevant information, allowing for faster and more informed decision-making.",
-    outcome:
-      "The platform reduced the time spent on data analysis by 40% and improved diagnostic accuracy by 25%, leading to better patient outcomes and more efficient healthcare delivery.",
-    process:
-      "We began with extensive user research, interviewing over 30 healthcare professionals to understand their workflow and pain points. This informed our design process, which included multiple iterations of wireframing, prototyping, and usability testing. We worked closely with AI engineers to ensure the machine learning models were effectively integrated into the user experience.",
-    type: "work",
-  },
-  {
-    id: "fintech-mobile-app",
-    title: "FinTech Mobile App",
-    description:
-      "A mobile banking application that simplifies financial management through AI-driven insights and personalized recommendations.",
-    category: "Finance",
-    coverImage: "/fintech-mobile-banking-app.jpg",
-    images: ["/fintech-app.png", "/banking-app-interface.png"],
-    client: "NextGen Banking",
-    year: "2022",
-    role: "UX/UI Designer",
-    tools: ["Sketch", "Principle", "Zeplin", "InVision"],
-    aiTools: ["Machine Learning", "Natural Language Processing", "Predictive Analytics"],
-    challenge:
-      "Traditional banking apps were complex and difficult to navigate, leading to low user engagement and satisfaction.",
-    solution:
-      "We created a clean, intuitive interface with AI-powered features that help users understand their spending patterns, set realistic financial goals, and receive personalized advice.",
-    outcome:
-      "The app achieved a 4.8/5 star rating on app stores, with users particularly praising its ease of use and helpful insights. User engagement increased by 60% compared to the client's previous app.",
-    process:
-      "Our design process involved creating detailed user personas, journey mapping, and information architecture before moving into visual design. We conducted weekly user testing sessions to refine the experience iteratively. The AI components were developed in parallel, with regular integration points to ensure a seamless experience.",
-    type: "work",
-  },
-  {
-    id: "e-commerce-product-recommendation-engine",
-    title: "E-Commerce Product Recommendation Engine",
-    description:
-      "An AI-driven product recommendation system that enhances the shopping experience through personalized suggestions.",
-    category: "E-Commerce",
-    coverImage: "/ecommerce-product-recommendation-engine.jpg",
-    images: ["/ecommerce-recommendation.jpg", "/vibrant-market-scene.png"],
-    client: "Global Retail Solutions",
-    year: "2023",
+      "An all-in-one mobile platform designed for creators to discover collaborations, enhance their skills, and leverage advanced AI tools (a CreationDose project).",
+    category: "Mobile App",
+    coverImage: "/Vidoser_01.png",
+    images: ["/Vidoser_01.png"],
+    client: "CreationDose",
+    year: "2021 – Present",
     role: "Product Designer",
-    tools: ["Figma", "Adobe XD", "Protopie", "Maze"],
-    aiTools: ["Recommendation Algorithms", "Computer Vision", "User Behavior Analysis"],
-    challenge:
-      "The client's e-commerce platform had low conversion rates and high cart abandonment due to customers struggling to find products that matched their preferences.",
-    solution:
-      "We designed a recommendation engine that analyzes user behavior, purchase history, and visual preferences to suggest relevant products in a visually appealing and non-intrusive way.",
-    outcome:
-      "The implementation resulted in a 35% increase in average order value and a 28% reduction in cart abandonment rate, significantly boosting the client's revenue.",
-    process:
-      "We started by analyzing existing user data to identify patterns and pain points. We then created multiple design concepts for integrating recommendations throughout the user journey. After selecting the most promising approach, we refined it through A/B testing and iterative improvements based on real user data.",
+    tools: [],
+    aiTools: ["AI-driven scouting", "Performance analytics"],
     type: "work",
+    challenge:
+      "The original Vidoser App needed to scale from a simple task-based tool to a comprehensive ecosystem for creators. The challenge was to simplify complex campaign workflows and AI-driven content requirements into a mobile-first experience that keeps creators engaged and productive.",
+    solution:
+      "I designed a streamlined mobile experience that centralizes campaign discovery, collaboration management, and performance tracking. By prioritizing a human-centered interface, I integrated complex features—such as AI-powered scouting and real-time analytics—into an intuitive workspace that guides creators through every step of their collaboration.",
+    outcome:
+      "The restyling and optimization led to a significant increase in user retention and a more efficient campaign completion rate. The app now serves as a high-performance bridge between brands and thousands of creators, scaling the platform's capacity to handle professional marketing campaigns.",
+    process:
+      "The development followed a rigorous human-centered methodology. I started by mapping the user journey to identify friction points in the collaboration flow. Working closely with developers, I created rapid prototypes to test AI-driven features early on. Through iterative testing and feedback from the creator community, we refined the interface to ensure technical complexity never compromised usability.",
   },
   {
-    id: "ai-writing-assistant",
-    title: "AI Writing Assistant",
+    id: "agm-costruzioni",
+    title: "Agm Costruzioni",
     description:
-      "A personal project exploring how AI can enhance the writing process for both creative and professional content.",
-    category: "Productivity",
-    coverImage: "/ai-writing-assistant-tool.jpg",
-    images: ["/writing-assistant.jpg", "/content-creation-workspace.png"],
-    client: "Self-initiated",
-    year: "2022",
-    role: "Designer & Developer",
-    tools: ["Figma", "React", "CSS", "JavaScript"],
-    aiTools: ["GPT-4", "BERT", "Sentiment Analysis"],
+      "A corporate website for a firm specializing in high-end residential and commercial construction.",
+    category: "Restyling Website",
+    coverImage: "/AGM_Costruzioni_03.png",
+    images: ["/AGM_Costruzioni_03.png"],
+    client: "AGM Costruzioni",
+    year: "2026",
+    role: "UI/UX Designer",
+    tools: [],
+    aiTools: [],
+    type: "work",
     challenge:
-      "Writers often face creative blocks, struggle with editing, or need assistance with research and fact-checking.",
+      "A firm specializing in high-end construction needed a digital presence that matched the quality of their physical builds. The previous website failed to communicate the brand’s craftsmanship, making it difficult for premium clients to appreciate the technical expertise and the prestige of their residential and commercial portfolio.",
     solution:
-      "I created a writing assistant that offers contextual suggestions, helps refine tone and style, and provides relevant research without disrupting the creative flow.",
+      'I driven the complete UI/UX restyling, focusing on a minimal and sophisticated interface. I redefined the visual identity and the user journey to create a "gallery-first" experience. By prioritizing high-quality visuals and clean typography, I ensured that the craftsmanship and technical details of the projects remained the focal point of the digital experience.',
     outcome:
-      "The tool has been used by over 500 writers in its beta phase, with 85% reporting improved productivity and 70% noting enhanced quality in their writing.",
+      "The new website successfully positions AGM Costruzioni as a leader in the luxury construction market. The streamlined navigation and premium aesthetic have improved brand perception and user engagement, providing a high-end showcase that effectively converts professional inquiries and high-profile leads.",
     process:
-      "This personal project evolved through several phases, starting with a simple prototype that I tested with fellow writers. I gradually added features based on feedback, focusing on creating an interface that felt like a helpful companion rather than an intrusive tool. The AI components were fine-tuned to provide suggestions that matched the user's writing style.",
-    type: "personal",
+      "I managed the entire design lifecycle, from initial concept to final hand-off. I started by identifying the key architectural elements that define the brand’s style, translating them into a digital design system. I then focused on creating a seamless user journey that guides visitors through the portfolio, ensuring a responsive and high-performance experience across all devices.",
   },
   {
-    id: "virtual-interior-designer",
-    title: "Virtual Interior Designer",
+    id: "vidoser-platform",
+    title: "Vidoser Platform - Ai Campaign Management",
     description:
-      "An AR application that helps users visualize furniture and decor in their space before making purchasing decisions.",
-    category: "Augmented Reality",
-    coverImage: "/ar-virtual-interior-designer-furniture.jpg",
-    images: ["/ar-interior.jpg", "/furniture-visualization.jpg"],
-    client: "Self-initiated",
-    year: "2023",
-    role: "UX Designer & AR Developer",
-    tools: ["Unity", "Blender", "ARKit", "ARCore"],
-    aiTools: ["Object Recognition", "Spatial Mapping", "Style Transfer"],
+      "An end-to-end web platform designed for brands and agencies to manage creator marketing campaigns at scale (a CreationDose project).",
+    category: "Desktop Platform",
+    coverImage: "/VidoserPlatform_02.png",
+    images: ["/VidoserPlatform_02.png"],
+    client: "CreationDose",
+    tools: [],
+    aiTools: ["AI-driven scouting", "Real-time analytics"],
+    type: "work",
+    year: "2021 – Present",
+    role: "Product Designer",
     challenge:
-      "Consumers often struggle to imagine how furniture and decor will look in their homes, leading to purchase hesitation and high return rates.",
+      "Brands and agencies needed a scalable, professional way to manage complex creator marketing campaigns. The challenge was to transform intricate business requirements and massive amounts of data into an end-to-end web platform that remains intuitive for high-level campaign management.",
     solution:
-      "I developed an AR app that uses AI to recognize spaces, suggest appropriate furniture, and realistically render items in the user's environment with accurate lighting and scale.",
+      "Working within a multidisciplinary team, I driven the UI/UX design of the platform, focusing on architecting complex workflows—such as AI-driven scouting, collaboration management, and real-time analytics. My role was to translate technical power into a professional, high-performance digital workspace, ensuring the design remained intuitive while meeting demanding business goals.",
     outcome:
-      "The prototype has garnered interest from several furniture retailers and interior design firms, with discussions ongoing about potential commercial applications.",
+      "The platform has become an essential tool for agencies to manage campaigns at scale. By simplifying the management of thousands of collaborations, the design has significantly reduced the operational overhead for campaign managers, providing a robust interface for data-driven decision-making.",
     process:
-      "This project began as an exploration of AR capabilities, but quickly evolved into a more comprehensive tool as I identified the potential to solve a common consumer problem. I focused on creating realistic rendering and intuitive interactions, testing with friends and family to refine the experience. The AI components were particularly challenging, requiring extensive training to accurately recognize different types of spaces and lighting conditions.",
-    type: "personal",
+      "The project required a deep dive into professional user needs. I collaborated closely with developers and stakeholders to ensure that complex AI features were translated into clear, actionable UI components. Through iterative prototyping and a focus on scalability, we built a digital environment that handles professional-grade workflows without sacrificing speed or clarity.",
   },
-]
+  {
+    id: "private-chef-catania",
+    title: "PrivateChef Catania",
+    description:
+      "A boutique website connecting professional chefs with clients for exclusive, high-end in-home dining experiences.",
+    category: "Website",
+    coverImage: "/PrivateChef_04.png",
+    images: ["/PrivateChef_04.png"],
+    tools: [],
+    aiTools: [],
+    type: "work",
+    client: "PrivateChef Catania",
+    year: "2024",
+    role: "UI/UX Designer",
+    challenge:
+      "A boutique culinary service needed a digital home that felt as exclusive as their in-home dining experiences. The challenge was to create a platform that didn't just list services, but conveyed the premium atmosphere of a private chef's work, while making the complex process of menu selection and booking feel effortless.",
+    solution:
+      "I driven the UI/UX design and the visual identity from the ground up. I created a sophisticated interface that prioritizes high-impact culinary photography and elegant typography. By streamlining the user journey, I transformed the booking and menu exploration into a seamless, intuitive experience that reflects the high-end nature of the service.",
+    outcome:
+      "The website successfully established a strong digital presence for the brand, aligning it with the luxury market in Sicily. The intuitive booking flow has simplified client interactions, resulting in a more professional image and an increased conversion rate for high-end dinner party inquiries.",
+    process:
+      "I focused on 'designing the mood' before the interface. I started by defining a visual palette that evoked exclusivity and professional craftsmanship. I then mapped out a simplified booking funnel, reducing the number of steps required to request a custom menu. Throughout the process, I ensured that the mobile experience was just as refined as the desktop version, as most high-end clients book on the go.",
+  },
+];

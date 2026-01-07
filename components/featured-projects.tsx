@@ -1,6 +1,5 @@
 "use client"
 
-import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { projects } from "@/lib/projects"
 import Image from "next/image"
@@ -8,14 +7,6 @@ import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
 
 export function FeaturedProjects() {
-  const [mounted, setMounted] = useState(false)
-
-  useEffect(() => {
-    setMounted(true)
-  }, [])
-
-  if (!mounted) return null
-
   // Display only the first 4 projects
   const featured = projects.slice(0, 4)
 

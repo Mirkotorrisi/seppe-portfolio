@@ -25,6 +25,10 @@ export default function AboutPage() {
 
   useEffect(() => {
     console.log("Loading profile image from blob URL")
+    // Scroll to top on mount
+    if (typeof window !== 'undefined') {
+      window.scrollTo({ top: 0, behavior: "instant" })
+    }
   }, [])
 
   return (
@@ -261,122 +265,6 @@ export default function AboutPage() {
                   <h3 className={`text-lg font-medium ${theme === "light" ? "text-gray-800" : ""}`}>{skill.name}</h3>
                 </motion.div>
               ))}
-            </div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.5 }}
-              className="mt-16 grid gap-8 md:grid-cols-2"
-            >
-              <div className="glass-neon-card p-6">
-                <h3 className={`text-xl font-bold mb-4 ${theme === "light" ? "text-gray-800" : ""}`}>Design Tools</h3>
-                <ul className="space-y-2 text-muted-foreground">
-                  <li className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
-                    Figma, Sketch, Adobe XD
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
-                    Framer, Protopie, Principle
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
-                    Adobe Creative Suite
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
-                    Blender, Cinema 4D
-                  </li>
-                </ul>
-              </div>
-
-              <div className="glass-neon-card p-6">
-                <h3 className={`text-xl font-bold mb-4 ${theme === "light" ? "text-gray-800" : ""}`}>AI & Technical</h3>
-                <ul className="space-y-2 text-muted-foreground">
-                  <li className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-indigo-400"></span>
-                    Midjourney, DALL-E, Stable Diffusion
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-indigo-400"></span>
-                    ChatGPT, Claude, Bard
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-indigo-400"></span>
-                    Basic Python & TensorFlow
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-indigo-400"></span>
-                    HTML, CSS, JavaScript
-                  </li>
-                </ul>
-              </div>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Personal Journey */}
-        <section className="section-spacing">
-          <div className="container mx-auto px-6 md:px-12">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="max-w-3xl mx-auto text-center mb-16"
-            >
-              <SectionPreTitle>My story</SectionPreTitle>
-              <h2 className={`heading-lg mb-4 ${theme === "light" ? "text-gray-800" : "text-white"}`}>
-                The Journey So Far
-              </h2>
-              <p className="text-lg text-muted-foreground">
-                From traditional design to AI-powered experiences, my career has been defined by a passion for
-                innovation and human-centered design.
-              </p>
-            </motion.div>
-
-            <div className="grid gap-8 md:grid-cols-2">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5 }}
-                className="glass-neon-card p-6"
-              >
-                <h3 className={`text-xl font-bold mb-4 ${theme === "light" ? "text-gray-800" : ""}`}>
-                  Education & Early Career
-                </h3>
-                <p className="text-muted-foreground mb-4">
-                  With a background in Visual Communication and Human-Computer Interaction, I began my career at a
-                  digital agency where I developed a strong foundation in user-centered design principles.
-                </p>
-                <p className="text-muted-foreground">
-                  This experience taught me the importance of balancing aesthetic appeal with functional design, a
-                  philosophy that continues to guide my work today.
-                </p>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                className="glass-neon-card p-6"
-              >
-                <h3 className={`text-xl font-bold mb-4 ${theme === "light" ? "text-gray-800" : ""}`}>
-                  Embracing AI & Technology
-                </h3>
-                <p className="text-muted-foreground mb-4">
-                  As AI began transforming the design landscape, I recognized its potential to create more personalized
-                  and intuitive user experiences. This led me to specialize in AI-driven design, combining my creative
-                  skills with technical knowledge.
-                </p>
-                <p className="text-muted-foreground">
-                  Today, I'm passionate about creating designs that harness the power of AI while maintaining a human
-                  touch.
-                </p>
-              </motion.div>
             </div>
           </div>
         </section>

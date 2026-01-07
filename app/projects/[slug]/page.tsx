@@ -5,7 +5,7 @@ import { useParams } from "next/navigation"
 import Image from "next/image"
 import { motion } from "framer-motion"
 import { SiteHeader } from "@/components/site-header"
-import { ArrowLeft, Calendar, User, Layers, Code, CheckCircle } from "lucide-react"
+import { ArrowLeft, Calendar, User, Layers, CheckCircle } from "lucide-react"
 import { type Project, projects } from "@/lib/projects"
 import Link from "next/link"
 import { StreamlinedBackground } from "@/components/ui-elements/streamlined-background"
@@ -25,6 +25,11 @@ export default function ProjectPage() {
       setLoading(false)
     }
   }, [params.slug])
+
+  // Scroll to top on mount
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "instant" })
+  }, [])
 
   if (loading) {
     return (
@@ -172,71 +177,6 @@ export default function ProjectPage() {
                 </div>
               </div>
             </motion.div>
-          </div>
-        </section>
-
-        {/* Tools & Technologies */}
-        <section className="section py-16">
-          <div className="container mx-auto px-6 md:px-12">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="max-w3xl mx-auto text-center mb-16"
-            >
-              <SectionPreTitle>Tech stack</SectionPreTitle>
-              <h2 className="heading-lg mb-4 text-white">Tools & Technologies</h2>
-              <p className="text-lg text-muted-foreground">
-                A combination of cutting-edge tools and technologies used to bring this project to life.
-              </p>
-            </motion.div>
-
-            <div className="grid gap-8 md:grid-cols-2">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5 }}
-                className="glass-neon-card p-8"
-              >
-                <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
-                  <Layers className="h-5 w-5 text-blue-400" /> Design & Development Tools
-                </h3>
-                <div className="flex flex-wrap gap-3">
-                  {project.tools.map((tool) => (
-                    <span
-                      key={tool}
-                      className="rounded-full bg-white/5 px-4 py-2 text-sm border border-white/10 hover:border-blue-500/30 transition-colors"
-                    >
-                      {tool}
-                    </span>
-                  ))}
-                </div>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                className="glass-neon-card p-8"
-              >
-                <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
-                  <Code className="h-5 w-5 text-violet-400" /> AI Integration
-                </h3>
-                <div className="flex flex-wrap gap-3">
-                  {project.aiTools.map((tool) => (
-                    <span
-                      key={tool}
-                      className="rounded-full bg-white/5 px-4 py-2 text-sm border border-white/10 hover:border-indigo-500/30 transition-colors"
-                    >
-                      {tool}
-                    </span>
-                  ))}
-                </div>
-              </motion.div>
-            </div>
           </div>
         </section>
 

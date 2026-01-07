@@ -40,10 +40,12 @@ export function FeaturedProjects() {
               className={`grid md:grid-cols-2 gap-8 md:gap-12 items-center`}
             >
               {/* Image - clickable, alternates left/right */}
-              <Link href={`/projects/${project.id}`}
+              <Link 
+                href={`/projects/${project.id}`}
                 className={`relative aspect-video rounded-xl overflow-hidden group ${
                   idx % 2 === 1 ? "md:order-2" : ""
                 }`}
+                aria-label={`View ${project.title} details`}
               >
                 <Image
                   src={project.coverImage || "/placeholder.svg"}

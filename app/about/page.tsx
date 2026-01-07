@@ -26,7 +26,9 @@ export default function AboutPage() {
   useEffect(() => {
     console.log("Loading profile image from blob URL")
     // Scroll to top on mount
-    window.scrollTo({ top: 0, behavior: "instant" })
+    if (typeof window !== 'undefined') {
+      window.scrollTo({ top: 0, behavior: "instant" })
+    }
   }, [])
 
   return (

@@ -28,7 +28,9 @@ export default function ProjectPage() {
 
   // Scroll to top on mount
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "instant" })
+    if (typeof window !== 'undefined') {
+      window.scrollTo({ top: 0, behavior: "instant" })
+    }
   }, [])
 
   if (loading) {

@@ -1,39 +1,47 @@
-"use client"
+"use client";
 
-import { useEffect, useState } from "react"
-import { useParams } from "next/navigation"
-import Image from "next/image"
-import { motion, useScroll } from "framer-motion"
-import { SiteHeader } from "@/components/site-header"
-import { ArrowLeft, Calendar, User, Layers, Target, Lightbulb, CheckCircle2 } from "lucide-react"
-import { type Project, projects } from "@/lib/projects"
-import Link from "next/link"
-import { StreamlinedBackground } from "@/components/ui-elements/streamlined-background"
-import { SectionPreTitle } from "@/components/ui-elements/section-pre-title"
-import { useTheme } from "next-themes"
-import { ProjectGalleryCarousel } from "@/components/project-gallery-carousel"
+import { useEffect, useState } from "react";
+import { useParams } from "next/navigation";
+import Image from "next/image";
+import { motion, useScroll } from "framer-motion";
+import { SiteHeader } from "@/components/site-header";
+import {
+  ArrowLeft,
+  Calendar,
+  User,
+  Layers,
+  Target,
+  Lightbulb,
+  CheckCircle2,
+} from "lucide-react";
+import { type Project, projects } from "@/lib/projects";
+import Link from "next/link";
+import { StreamlinedBackground } from "@/components/ui-elements/streamlined-background";
+import { SectionPreTitle } from "@/components/ui-elements/section-pre-title";
+import { useTheme } from "next-themes";
+import { ProjectGalleryCarousel } from "@/components/project-gallery-carousel";
 
 export default function ProjectPage() {
-  const params = useParams()
-  const [project, setProject] = useState<Project | null>(null)
-  const [loading, setLoading] = useState(true)
-  const { theme } = useTheme()
-  const { scrollYProgress } = useScroll()
+  const params = useParams();
+  const [project, setProject] = useState<Project | null>(null);
+  const [loading, setLoading] = useState(true);
+  const { theme } = useTheme();
+  const { scrollYProgress } = useScroll();
 
   useEffect(() => {
     if (params.slug) {
-      const foundProject = projects.find((p) => p.id === params.slug)
-      setProject(foundProject || null)
-      setLoading(false)
+      const foundProject = projects.find((p) => p.id === params.slug);
+      setProject(foundProject || null);
+      setLoading(false);
     }
-  }, [params.slug])
+  }, [params.slug]);
 
   if (loading) {
     return (
       <div className="flex min-h-screen items-center justify-center">
         <div className="h-8 w-8 animate-spin rounded-full border-4 border-blue-500 border-t-transparent" />
       </div>
-    )
+    );
   }
 
   if (!project) {
@@ -44,7 +52,7 @@ export default function ProjectPage() {
           Return to home
         </Link>
       </div>
-    )
+    );
   }
 
   const processSteps = project.process
@@ -53,7 +61,7 @@ export default function ProjectPage() {
     .map((step, i) => ({
       number: i + 1,
       text: step + (step.endsWith(".") ? "" : "."),
-    }))
+    }));
 
   return (
     <main className="relative flex min-h-screen flex-col dark:bg-none overflow-x-hidden max-w-full">
@@ -75,12 +83,16 @@ export default function ProjectPage() {
                 className="mb-6 inline-flex items-center gap-2 text-sm font-medium tracking-tight transition-colors relative group"
               >
                 <ArrowLeft className="h-4 w-4" />
-                <span className="group-hover:neon-gradient-text">Back to home</span>
+                <span className="group-hover:neon-gradient-text">
+                  Back to home
+                </span>
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 transition-all duration-300 group-hover:w-full"></span>
               </Link>
               <SectionPreTitle>Project showcase</SectionPreTitle>
               <h1 className="heading-xl mb-6 text-white">{project.title}</h1>
-              <p className="text-xl text-muted-foreground max-w-3xl">{project.description}</p>
+              <p className="text-xl text-muted-foreground max-w-3xl">
+                {project.description}
+              </p>
             </motion.div>
 
             <motion.div
@@ -116,7 +128,9 @@ export default function ProjectPage() {
                   <div className="mb-4 w-12 h-12 rounded-full bg-gradient-to-br from-cyan-400/20 to-blue-600/20 flex items-center justify-center text-cyan-400 group-hover:scale-110 transition-transform duration-300">
                     <User className="h-6 w-6" />
                   </div>
-                  <span className="block text-sm text-muted-foreground mb-1">Client</span>
+                  <span className="block text-sm text-muted-foreground mb-1">
+                    Client
+                  </span>
                   <span className="text-lg font-medium">{project.client}</span>
                 </div>
               </motion.div>
@@ -132,7 +146,9 @@ export default function ProjectPage() {
                   <div className="mb-4 w-12 h-12 rounded-full bg-gradient-to-br from-blue-400/20 to-indigo-600/20 flex items-center justify-center text-blue-400 group-hover:scale-110 transition-transform duration-300">
                     <Calendar className="h-6 w-6" />
                   </div>
-                  <span className="block text-sm text-muted-foreground mb-1">Year</span>
+                  <span className="block text-sm text-muted-foreground mb-1">
+                    Year
+                  </span>
                   <span className="text-lg font-medium">{project.year}</span>
                 </div>
               </motion.div>
@@ -148,7 +164,9 @@ export default function ProjectPage() {
                   <div className="mb-4 w-12 h-12 rounded-full bg-gradient-to-br from-indigo-400/20 to-indigo-600/20 flex items-center justify-center text-indigo-400 group-hover:scale-110 transition-transform duration-300">
                     <Layers className="h-6 w-6" />
                   </div>
-                  <span className="block text-sm text-muted-foreground mb-1">Role</span>
+                  <span className="block text-sm text-muted-foreground mb-1">
+                    Role
+                  </span>
                   <span className="text-lg font-medium">{project.role}</span>
                 </div>
               </motion.div>
@@ -187,7 +205,10 @@ export default function ProjectPage() {
                       {/* Outer rings with pulse - cyan-blue colors */}
                       <motion.div
                         animate={{ scale: [1, 1.3, 1], opacity: [0.3, 0, 0.3] }}
-                        transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
+                        transition={{
+                          duration: 2,
+                          repeat: Number.POSITIVE_INFINITY,
+                        }}
                         className="absolute inset-0 rounded-full bg-gradient-to-br from-cyan-400/30 to-blue-400/30 blur-2xl"
                       />
 
@@ -198,7 +219,10 @@ export default function ProjectPage() {
                         <div className="absolute w-1/2 h-1/2 rounded-full bg-gradient-to-br from-cyan-500/40 to-blue-500/40 border-4 border-blue-400/70" />
                         <motion.div
                           animate={{ scale: [1, 1.2, 1] }}
-                          transition={{ duration: 1.5, repeat: Number.POSITIVE_INFINITY }}
+                          transition={{
+                            duration: 1.5,
+                            repeat: Number.POSITIVE_INFINITY,
+                          }}
                           className="absolute w-1/4 h-1/4 rounded-full bg-gradient-to-br from-cyan-400 to-blue-400 shadow-lg shadow-cyan-500/50"
                         />
                         <Target className="absolute w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 text-white z-10" />
@@ -284,7 +308,11 @@ export default function ProjectPage() {
                   >
                     <motion.div
                       animate={{ y: [0, -20, 0] }}
-                      transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
+                      transition={{
+                        duration: 3,
+                        repeat: Number.POSITIVE_INFINITY,
+                        ease: "easeInOut",
+                      }}
                       className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64"
                     >
                       {/* Glowing light effect - blue-indigo colors */}
@@ -293,7 +321,10 @@ export default function ProjectPage() {
                           scale: [1, 1.4, 1],
                           opacity: [0.5, 0.8, 0.5],
                         }}
-                        transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
+                        transition={{
+                          duration: 2,
+                          repeat: Number.POSITIVE_INFINITY,
+                        }}
                         className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-300/40 via-indigo-300/40 to-indigo-400/40 blur-3xl"
                       />
 
@@ -305,7 +336,10 @@ export default function ProjectPage() {
                             opacity: [0.6, 1, 0.6],
                             scale: [0.95, 1.05, 0.95],
                           }}
-                          transition={{ duration: 1.5, repeat: Number.POSITIVE_INFINITY }}
+                          transition={{
+                            duration: 1.5,
+                            repeat: Number.POSITIVE_INFINITY,
+                          }}
                           className="absolute w-48 h-48 rounded-full bg-gradient-to-br from-blue-400/60 via-indigo-400/60 to-indigo-500/60 backdrop-blur-sm"
                         />
 
@@ -354,8 +388,12 @@ export default function ProjectPage() {
                   viewport={{ once: true }}
                   className="text-center mb-20"
                 >
-                  <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">The Process</h2>
-                  <p className="text-xl text-muted-foreground">Step by step journey from concept to completion</p>
+                  <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">
+                    The Process
+                  </h2>
+                  <p className="text-xl text-muted-foreground">
+                    Step by step journey from concept to completion
+                  </p>
                 </motion.div>
 
                 {/* Timeline */}
@@ -368,7 +406,8 @@ export default function ProjectPage() {
                     transition={{ duration: 1.5, ease: "easeOut" }}
                     className="absolute left-8 md:left-1/2 top-0 w-0.5 md:w-1 md:-translate-x-1/2"
                     style={{
-                      background: "linear-gradient(to bottom, rgb(34, 211, 238), rgb(59, 130, 246), rgb(99, 102, 241))",
+                      background:
+                        "linear-gradient(to bottom, rgb(34, 211, 238), rgb(59, 130, 246), rgb(99, 102, 241))",
                       willChange: "height",
                       transformOrigin: "top",
                       transform: "translate3d(-50%, 0, 0)",
@@ -386,7 +425,9 @@ export default function ProjectPage() {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         className={`relative flex items-start md:items-center ${
-                          index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
+                          index % 2 === 0
+                            ? "md:flex-row"
+                            : "md:flex-row-reverse"
                         } flex-row pl-20 md:pl-0`}
                       >
                         <div
@@ -399,7 +440,9 @@ export default function ProjectPage() {
                         </div>
 
                         {/* Content card */}
-                        <div className={`w-full md:w-[calc(50%-4rem)] ${index % 2 === 0 ? "md:pr-16" : "md:pl-16"}`}>
+                        <div
+                          className={`w-full md:w-[calc(50%-4rem)] ${index % 2 === 0 ? "md:pr-16" : "md:pl-16"}`}
+                        >
                           <motion.div
                             whileHover={{ scale: 1.02, y: -4 }}
                             className="glass-neon-card p-6 md:p-8 relative group"
@@ -416,7 +459,9 @@ export default function ProjectPage() {
                             />
                             <div className="flex items-start gap-3 md:gap-4">
                               <CheckCircle2 className="w-5 h-5 md:w-6 md:h-6 text-cyan-400 flex-shrink-0 mt-1" />
-                              <p className="text-base md:text-lg leading-relaxed text-foreground">{step.text}</p>
+                              <p className="text-base md:text-lg leading-relaxed text-foreground">
+                                {step.text}
+                              </p>
                             </div>
                           </motion.div>
                         </div>
@@ -442,7 +487,9 @@ export default function ProjectPage() {
                   viewport={{ once: true }}
                   className="text-center mb-16"
                 >
-                  <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">The Outcome</h2>
+                  <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">
+                    The Outcome
+                  </h2>
                 </motion.div>
 
                 <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -456,7 +503,7 @@ export default function ProjectPage() {
                   >
                     <div className="relative aspect-square rounded-3xl overflow-hidden glass-neon-card">
                       <Image
-                        src={project.coverImage || "/placeholder.svg"}
+                        src={project.outcomeImage || "/placeholder.svg"}
                         alt={`${project.title} - Final Product`}
                         fill
                         className="object-cover"
@@ -471,11 +518,17 @@ export default function ProjectPage() {
                     viewport={{ once: true, margin: "-150px" }}
                     transition={{ duration: 0.8, delay: 0.2 }}
                   >
-                    <p className="text-xl leading-relaxed text-muted-foreground mb-8">{project.outcome}</p>
+                    <p className="text-xl leading-relaxed text-muted-foreground mb-8">
+                      {project.outcome}
+                    </p>
 
                     {/* Key results */}
                     <div className="space-y-4">
-                      {["Exceeded expectations", "Delivered on time", "Positive user feedback"].map((result, i) => (
+                      {[
+                        "Exceeded expectations",
+                        "Delivered on time",
+                        "Positive user feedback",
+                      ].map((result, i) => (
                         <motion.div
                           key={i}
                           initial={{ opacity: 0, x: 20 }}
@@ -485,7 +538,9 @@ export default function ProjectPage() {
                           className="flex items-center gap-3"
                         >
                           <CheckCircle2 className="w-6 h-6 text-cyan-400" />
-                          <span className="text-lg text-foreground">{result}</span>
+                          <span className="text-lg text-foreground">
+                            {result}
+                          </span>
                         </motion.div>
                       ))}
                     </div>
@@ -519,7 +574,10 @@ export default function ProjectPage() {
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             >
-              <ProjectGalleryCarousel images={project.images} projectTitle={project.title} />
+              <ProjectGalleryCarousel
+                images={project.images}
+                projectTitle={project.title}
+              />
             </motion.div>
           </div>
         </section>
@@ -532,7 +590,9 @@ export default function ProjectPage() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
               className={`glass-neon-card p-12 text-center relative overflow-hidden border-2 ${
-                theme === "light" ? "border-indigo-300 shadow-xl" : "border-indigo-500/40"
+                theme === "light"
+                  ? "border-indigo-300 shadow-xl"
+                  : "border-indigo-500/40"
               }`}
               style={{
                 backgroundImage:
@@ -546,7 +606,10 @@ export default function ProjectPage() {
               <div className="absolute -bottom-20 -right-20 w-40 h-40 rounded-full bg-violet-500/50 blur-3xl"></div>
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 rounded-full bg-blue-500/40 blur-3xl"></div>
 
-              <h2 className="heading-lg mb-6 text-white relative z-10" style={{ color: "white" }}>
+              <h2
+                className="heading-lg mb-6 text-white relative z-10"
+                style={{ color: "white" }}
+              >
                 Interested in working together?
               </h2>
               <p
@@ -554,7 +617,8 @@ export default function ProjectPage() {
                   theme === "light" ? "text-white/90" : "text-muted-foreground"
                 }`}
               >
-                Let's collaborate on your next project and create something extraordinary together.
+                Let's collaborate on your next project and create something
+                extraordinary together.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center relative z-10">
                 <Link href="/about#contact">
@@ -579,5 +643,5 @@ export default function ProjectPage() {
         </div>
       </footer>
     </main>
-  )
+  );
 }

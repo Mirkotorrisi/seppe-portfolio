@@ -1,30 +1,39 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import Image from "next/image"
-import { SiteHeader } from "@/components/site-header"
-import { Download, Briefcase, Code, Palette, Lightbulb, Cpu, Settings, Rocket } from "lucide-react"
-import { StreamlinedBackground } from "@/components/ui-elements/streamlined-background"
-import { SectionPreTitle } from "@/components/ui-elements/section-pre-title"
-import { ContactSection } from "@/components/contact-section"
-import { useEffect, useState } from "react"
-import { useTheme } from "next-themes"
+import { motion } from "framer-motion";
+import Image from "next/image";
+import { SiteHeader } from "@/components/site-header";
+import {
+  Download,
+  Briefcase,
+  Code,
+  Palette,
+  Lightbulb,
+  Cpu,
+  Settings,
+  Rocket,
+} from "lucide-react";
+import { StreamlinedBackground } from "@/components/ui-elements/streamlined-background";
+import { SectionPreTitle } from "@/components/ui-elements/section-pre-title";
+import { ContactSection } from "@/components/contact-section";
+import { useEffect, useState } from "react";
+import { useTheme } from "next-themes";
 
 export default function AboutPage() {
-  const [imageLoaded, setImageLoaded] = useState(false)
-  const [imageError, setImageError] = useState(false)
-  const { theme } = useTheme()
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const [imageError, setImageError] = useState(false);
+  const { theme } = useTheme();
 
   const skills = [
     { name: "UX/UI Design", icon: <Palette className="h-5 w-5" /> },
     { name: "Product Strategy", icon: <Briefcase className="h-5 w-5" /> },
     { name: "Prototyping", icon: <Code className="h-5 w-5" /> },
     { name: "User Research", icon: <Lightbulb className="h-5 w-5" /> },
-  ]
+  ];
 
   useEffect(() => {
-    console.log("Loading profile image from blob URL")
-  }, [])
+    console.log("Loading profile image from blob URL");
+  }, []);
 
   return (
     <main className="relative flex min-h-screen flex-col overflow-x-hidden max-w-full">
@@ -43,15 +52,24 @@ export default function AboutPage() {
                 className="text-left"
               >
                 <SectionPreTitle>hello there</SectionPreTitle>
-                <h1 className={`heading-xl mb-6 ${theme === "light" ? "text-gray-800" : "text-white"}`}>About Me</h1>
+                <h1
+                  className={`heading-xl mb-6 ${theme === "light" ? "text-gray-800" : "text-white"}`}
+                >
+                  About Me
+                </h1>
                 <p className="text-lg text-muted-foreground mb-8">
-                  I'm Giuseppe Parisi, a Digital Product Designer focused on creating intuitive, human-centered experiences that bridge
-                  the gap between people and technology. My approach combines strategic design with technical expertise
-                  to transform complex challenges into seamless solutions. I don't just design interfaces; I build
-                  digital products that empower users and deliver measurable value for businesses.
+                  I'm Giuseppe Parisi, a Digital Product Designer focused on
+                  creating intuitive, human-centered experiences that bridge the
+                  gap between people and technology. My approach combines
+                  strategic design with technical expertise to transform complex
+                  challenges into seamless solutions. I don't just design
+                  interfaces; I build digital products that empower users and
+                  deliver measurable value for businesses.
                 </p>
 
-                <button
+                <a
+                  href="/GIuseppeParisi_CV.pdf"
+                  download
                   className="flex items-center justify-center gap-2 relative z-10 py-3 px-6 rounded-lg font-medium text-white overflow-hidden transition-all duration-300 border border-white/10 shadow-sm hover:shadow-lg hover:scale-[1.02] hover:border-white/20 gradient-button"
                   style={{
                     background:
@@ -60,7 +78,7 @@ export default function AboutPage() {
                   }}
                 >
                   <Download className="h-4 w-4" /> Download Resume
-                </button>
+                </a>
               </motion.div>
 
               <motion.div
@@ -91,12 +109,14 @@ export default function AboutPage() {
                     priority
                     onLoad={() => setImageLoaded(true)}
                     onError={() => {
-                      console.error("Failed to load profile image")
-                      setImageError(true)
+                      console.error("Failed to load profile image");
+                      setImageError(true);
                     }}
                   />
 
-                  {!imageLoaded && !imageError && <div className="absolute inset-0 bg-gray-700"></div>}
+                  {!imageLoaded && !imageError && (
+                    <div className="absolute inset-0 bg-gray-700"></div>
+                  )}
                 </div>
               </motion.div>
             </div>
@@ -114,15 +134,23 @@ export default function AboutPage() {
               className="max-w-3xl mx-auto text-center"
             >
               <SectionPreTitle>Professional journey</SectionPreTitle>
-              <h2 className={`heading-lg mb-4 ${theme === "light" ? "text-gray-800" : "text-white"}`}>Currently at</h2>
-              <p className={`text-2xl font-medium mb-6 ${theme === "light" ? "text-gray-800" : "text-white"}`}>
+              <h2
+                className={`heading-lg mb-4 ${theme === "light" ? "text-gray-800" : "text-white"}`}
+              >
+                Currently at
+              </h2>
+              <p
+                className={`text-2xl font-medium mb-6 ${theme === "light" ? "text-gray-800" : "text-white"}`}
+              >
                 CreationDose
               </p>
               <p className="text-lg text-muted-foreground">
-                Driving the UI/UX design for the Vidoser ecosystem, where I focus on developing AI-powered tools for the
-                Creator Economy. I manage the design process from concept to delivery, ensuring technical requirements
-                are translated into intuitive, human-centered experiences while maintaining high quality standards
-                across the platform.
+                Driving the UI/UX design for the Vidoser ecosystem, where I
+                focus on developing AI-powered tools for the Creator Economy. I
+                manage the design process from concept to delivery, ensuring
+                technical requirements are translated into intuitive,
+                human-centered experiences while maintaining high quality
+                standards across the platform.
               </p>
             </motion.div>
           </div>
@@ -139,7 +167,11 @@ export default function AboutPage() {
               className="max-w-3xl mx-auto text-center mb-20"
             >
               <SectionPreTitle>My philosophy</SectionPreTitle>
-              <h2 className={`heading-lg mb-4 ${theme === "light" ? "text-gray-800" : "text-white"}`}>How I Work</h2>
+              <h2
+                className={`heading-lg mb-4 ${theme === "light" ? "text-gray-800" : "text-white"}`}
+              >
+                How I Work
+              </h2>
               <p className="text-lg text-muted-foreground">
                 A strategic approach to design that delivers measurable results
               </p>
@@ -166,8 +198,14 @@ export default function AboutPage() {
                     <div className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64">
                       {/* Glowing background effect */}
                       <motion.div
-                        animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.6, 0.3] }}
-                        transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY }}
+                        animate={{
+                          scale: [1, 1.2, 1],
+                          opacity: [0.3, 0.6, 0.3],
+                        }}
+                        transition={{
+                          duration: 3,
+                          repeat: Number.POSITIVE_INFINITY,
+                        }}
                         className="absolute inset-0 rounded-3xl bg-gradient-to-br from-cyan-400/30 via-blue-400/30 to-indigo-400/30 blur-3xl"
                       />
 
@@ -175,15 +213,34 @@ export default function AboutPage() {
                       <svg
                         viewBox="0 0 300 300"
                         className="absolute inset-0 w-full h-full"
-                        style={{ filter: "drop-shadow(0 0 10px rgba(6, 182, 212, 0.3))" }}
+                        style={{
+                          filter:
+                            "drop-shadow(0 0 10px rgba(6, 182, 212, 0.3))",
+                        }}
                       >
                         {/* Map grid lines */}
-                        <g stroke="rgba(6, 182, 212, 0.3)" strokeWidth="1" fill="none">
+                        <g
+                          stroke="rgba(6, 182, 212, 0.3)"
+                          strokeWidth="1"
+                          fill="none"
+                        >
                           {[...Array(6)].map((_, i) => (
-                            <line key={`h-${i}`} x1="40" y1={50 + i * 40} x2="260" y2={50 + i * 40} />
+                            <line
+                              key={`h-${i}`}
+                              x1="40"
+                              y1={50 + i * 40}
+                              x2="260"
+                              y2={50 + i * 40}
+                            />
                           ))}
                           {[...Array(6)].map((_, i) => (
-                            <line key={`v-${i}`} x1={50 + i * 40} y1="40" x2={50 + i * 40} y2="260" />
+                            <line
+                              key={`v-${i}`}
+                              x1={50 + i * 40}
+                              y1="40"
+                              x2={50 + i * 40}
+                              y2="260"
+                            />
                           ))}
                         </g>
 
@@ -195,7 +252,11 @@ export default function AboutPage() {
                           fill="none"
                           initial={{ pathLength: 0 }}
                           animate={{ pathLength: 1 }}
-                          transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
+                          transition={{
+                            duration: 2,
+                            repeat: Number.POSITIVE_INFINITY,
+                            ease: "easeInOut",
+                          }}
                         />
 
                         {/* Illuminating points on the map */}
@@ -272,8 +333,10 @@ export default function AboutPage() {
                       transition={{ delay: 0.5 }}
                       className="text-xl leading-relaxed text-muted-foreground"
                     >
-                      I design interfaces that don't just look good, but perform. My focus is on conversion, user
-                      retention, and creating intuitive flows that reduce friction and accelerate business growth.
+                      I design interfaces that don't just look good, but
+                      perform. My focus is on conversion, user retention, and
+                      creating intuitive flows that reduce friction and
+                      accelerate business growth.
                     </motion.p>
                   </motion.div>
                 </div>
@@ -314,9 +377,10 @@ export default function AboutPage() {
                       transition={{ delay: 0.5 }}
                       className="text-xl leading-relaxed text-muted-foreground"
                     >
-                      I specialize in making complex technology accessible. I integrate AI and advanced functionalities
-                      to automate tasks and empower users, turning sophisticated technical capabilities into easy-to-use
-                      digital products.
+                      I specialize in making complex technology accessible. I
+                      integrate AI and advanced functionalities to automate
+                      tasks and empower users, turning sophisticated technical
+                      capabilities into easy-to-use digital products.
                     </motion.p>
                   </motion.div>
 
@@ -345,7 +409,10 @@ export default function AboutPage() {
                           scale: [1, 1.2, 1],
                           opacity: [0.5, 0.8, 0.5],
                         }}
-                        transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
+                        transition={{
+                          duration: 2,
+                          repeat: Number.POSITIVE_INFINITY,
+                        }}
                         className="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-400/40 via-indigo-400/40 to-indigo-500/40 blur-3xl"
                       />
 
@@ -380,7 +447,10 @@ export default function AboutPage() {
                               "0 0 20px rgba(59, 130, 246, 0.5)",
                             ],
                           }}
-                          transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
+                          transition={{
+                            duration: 2,
+                            repeat: Number.POSITIVE_INFINITY,
+                          }}
                           className="relative w-32 h-32 rounded-2xl bg-gradient-to-br from-blue-500 to-indigo-500 border-4 border-blue-400/30 flex items-center justify-center"
                         >
                           <Cpu className="w-20 h-20 text-white" />
@@ -413,8 +483,14 @@ export default function AboutPage() {
                     <div className="relative w-40 h-40 sm:w-48 sm:h-48 md:w-64 md:h-64 flex items-center justify-center">
                       {/* Glowing effect */}
                       <motion.div
-                        animate={{ scale: [1, 1.3, 1], opacity: [0.4, 0.7, 0.4] }}
-                        transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
+                        animate={{
+                          scale: [1, 1.3, 1],
+                          opacity: [0.4, 0.7, 0.4],
+                        }}
+                        transition={{
+                          duration: 2,
+                          repeat: Number.POSITIVE_INFINITY,
+                        }}
                         className="absolute inset-0 rounded-full bg-gradient-to-br from-cyan-400/30 via-blue-400/30 to-indigo-400/30 blur-3xl"
                       />
 
@@ -467,8 +543,10 @@ export default function AboutPage() {
                       transition={{ delay: 0.5 }}
                       className="text-xl leading-relaxed text-muted-foreground"
                     >
-                      I build design systems and scalable architectures. This ensures a consistent brand identity across
-                      all platforms while speeding up the development process and reducing long-term maintenance costs.
+                      I build design systems and scalable architectures. This
+                      ensures a consistent brand identity across all platforms
+                      while speeding up the development process and reducing
+                      long-term maintenance costs.
                     </motion.p>
                   </motion.div>
                 </div>
@@ -509,9 +587,10 @@ export default function AboutPage() {
                       transition={{ delay: 0.5 }}
                       className="text-xl leading-relaxed text-muted-foreground"
                     >
-                      I bridge the gap between design and code. By working closely with developers and stakeholders, I
-                      ensure the final product is technically sound, pixel-perfect, and fully aligned with the initial
-                      business goals.
+                      I bridge the gap between design and code. By working
+                      closely with developers and stakeholders, I ensure the
+                      final product is technically sound, pixel-perfect, and
+                      fully aligned with the initial business goals.
                     </motion.p>
                   </motion.div>
 
@@ -525,13 +604,21 @@ export default function AboutPage() {
                   >
                     <motion.div
                       animate={{ y: [0, -15, 0] }}
-                      transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
+                      transition={{
+                        duration: 3,
+                        repeat: Number.POSITIVE_INFINITY,
+                        ease: "easeInOut",
+                      }}
                       className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 flex items-center justify-center"
                     >
                       {/* Rocket icon */}
                       <motion.div
                         animate={{ rotate: [0, -5, 5, 0] }}
-                        transition={{ duration: 4, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
+                        transition={{
+                          duration: 4,
+                          repeat: Number.POSITIVE_INFINITY,
+                          ease: "easeInOut",
+                        }}
                         className="relative z-10"
                       >
                         <Rocket className="w-32 h-32 text-cyan-400 drop-shadow-[0_0_30px_rgba(6,182,212,0.8)]" />
@@ -539,8 +626,14 @@ export default function AboutPage() {
 
                       {/* Rocket thrust glow - positioned directly under rocket */}
                       <motion.div
-                        animate={{ scale: [1, 1.5, 1], opacity: [0.8, 0.3, 0.8] }}
-                        transition={{ duration: 1, repeat: Number.POSITIVE_INFINITY }}
+                        animate={{
+                          scale: [1, 1.5, 1],
+                          opacity: [0.8, 0.3, 0.8],
+                        }}
+                        transition={{
+                          duration: 1,
+                          repeat: Number.POSITIVE_INFINITY,
+                        }}
                         className="absolute top-1/2 translate-y-12 left-1/2 -translate-x-1/2 w-24 h-32 bg-gradient-to-b from-cyan-400/60 via-blue-400/40 to-transparent rounded-full blur-xl"
                       />
                     </motion.div>
@@ -562,12 +655,14 @@ export default function AboutPage() {
               className="max-w-3xl mx-auto text-center mb-16"
             >
               <SectionPreTitle>My expertise</SectionPreTitle>
-              <h2 className={`heading-lg mb-4 ${theme === "light" ? "text-gray-800" : "text-white"}`}>
+              <h2
+                className={`heading-lg mb-4 ${theme === "light" ? "text-gray-800" : "text-white"}`}
+              >
                 Skills & Capabilities
               </h2>
               <p className="text-lg text-muted-foreground">
-                A combination of design expertise and technical knowledge that enables me to create exceptional digital
-                experiences.
+                A combination of design expertise and technical knowledge that
+                enables me to create exceptional digital experiences.
               </p>
             </motion.div>
 
@@ -587,7 +682,11 @@ export default function AboutPage() {
                   <div className="mb-4 rounded-full bg-gradient-to-br from-cyan-500/10 to-indigo-500/10 p-3 text-cyan-400 mx-auto w-12 h-12 flex items-center justify-center">
                     {skill.icon}
                   </div>
-                  <h3 className={`text-lg font-medium ${theme === "light" ? "text-gray-800" : ""}`}>{skill.name}</h3>
+                  <h3
+                    className={`text-lg font-medium ${theme === "light" ? "text-gray-800" : ""}`}
+                  >
+                    {skill.name}
+                  </h3>
                 </motion.div>
               ))}
             </div>
@@ -624,5 +723,5 @@ export default function AboutPage() {
         }
       `}</style>
     </main>
-  )
+  );
 }

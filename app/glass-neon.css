@@ -89,7 +89,7 @@
 
 .light .glass-neon-card {
   background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(6px); /* Reduced backdrop-filter blur in light mode for performance */
   border: 1px solid rgba(6, 182, 212, 0.1);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
 }
@@ -308,7 +308,7 @@
 
 .light .glass-panel {
   background: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(6px); /* Reduced backdrop-filter blur in light mode for performance */
   border: 1px solid rgba(6, 182, 212, 0.1);
 }
 

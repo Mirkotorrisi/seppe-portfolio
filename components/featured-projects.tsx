@@ -1,14 +1,27 @@
 "use client"
 
+import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { projects } from "@/lib/projects"
 import Image from "next/image"
 import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
+import { useTheme } from "next-themes"
+import { SectionPreTitle } from "@/components/ui-elements/section-pre-title"
+
+const PROJECTS_PER_PAGE = 4
 
 export function FeaturedProjects() {
-  // Display only the first 4 projects
-  const featured = projects.slice(0, 4)
+  const [mounted, setMounted] = useState(false)
+  const { theme } = useTheme()
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  if (!mounted) return null
+
+  const visibleProjects = projects.slice(0, 4)
 
   return (
     <section id="projects" className="section-spacing relative overflow-hidden">
@@ -28,9 +41,9 @@ export function FeaturedProjects() {
           </p>
         </motion.div>
 
-        {/* Featured Projects - Stacked Layout */}
-        <div className="space-y-20 mb-20">
-          {featured.map((project, idx) => (
+        {/* Featured Projects - Alternating Layout */}
+        <div className="space-y-20">
+          {visibleProjects.map((project, idx) => (
             <motion.div
               key={project.id}
               initial={{ opacity: 0, y: 40 }}
@@ -39,13 +52,11 @@ export function FeaturedProjects() {
               transition={{ duration: 0.6 }}
               className={`grid md:grid-cols-2 gap-8 md:gap-12 items-center`}
             >
-              {/* Image - clickable, alternates left/right */}
-              <Link 
+              <Link
                 href={`/projects/${project.id}`}
                 className={`relative aspect-video rounded-xl overflow-hidden group ${
                   idx % 2 === 1 ? "md:order-2" : ""
                 }`}
-                aria-label={`View ${project.title} details`}
               >
                 <Image
                   src={project.coverImage || "/placeholder.svg"}
@@ -66,9 +77,7 @@ export function FeaturedProjects() {
                   viewport={{ once: true }}
                   transition={{ delay: 0.2 }}
                 >
-                  <span className="text-sm font-medium bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 bg-clip-text text-transparent">
-                    {project.category}
-                  </span>
+                  <SectionPreTitle className="mb-0">{project.category}</SectionPreTitle>
                 </motion.div>
 
                 <motion.h3

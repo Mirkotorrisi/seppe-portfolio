@@ -1,51 +1,44 @@
-"use client";
+"use client"
 
-import { motion } from "framer-motion";
-import { AnimatedText } from "@/components/animated-text";
-import { ArrowDown } from "lucide-react";
-import { DynamicGradientText } from "@/components/ui-elements/dynamic-gradient-text";
-import { useTheme } from "next-themes";
-import { useEffect, useState, useCallback } from "react";
+import { motion } from "framer-motion"
+import { AnimatedText } from "@/components/animated-text"
+import { ArrowDown } from "lucide-react"
+import { DynamicGradientText } from "@/components/ui-elements/dynamic-gradient-text"
+import { useTheme } from "next-themes"
+import { useEffect, useState, useCallback } from "react"
 
 export function HeroSection() {
-  const { theme } = useTheme();
-  const [isMounted, setIsMounted] = useState(false);
-  const animatedTexts = [
-    "Digital Product Designer",
-    "AI Enthusiast",
-    "UX Strategist",
-    "Visual Storyteller",
-  ];
+  const { theme } = useTheme()
+  const [isMounted, setIsMounted] = useState(false)
+  const animatedTexts = ["Product Designer", "UI UX Designer", "UX Strategist"]
 
   useEffect(() => {
-    setIsMounted(true);
-  }, []);
+    setIsMounted(true)
+  }, [])
 
   const scrollToNextSection = useCallback(() => {
-    const nextSection = document.getElementById("projects");
+    const nextSection = document.getElementById("projects")
 
     if (nextSection) {
-      const pretitle = nextSection.querySelector(".font-caveat");
+      const pretitle = nextSection.querySelector(".font-caveat")
 
       if (pretitle) {
         // Slightly increased offset for better transition on scroll
-        const pretitlePosition =
-          pretitle.getBoundingClientRect().top + window.pageYOffset - 40;
+        const pretitlePosition = pretitle.getBoundingClientRect().top + window.pageYOffset - 40
 
         window.scrollTo({
           top: pretitlePosition,
           behavior: "smooth",
-        });
+        })
       } else {
-        const sectionPosition =
-          nextSection.getBoundingClientRect().top + window.pageYOffset;
+        const sectionPosition = nextSection.getBoundingClientRect().top + window.pageYOffset
         window.scrollTo({
           top: sectionPosition,
           behavior: "smooth",
-        });
+        })
       }
     }
-  }, []);
+  }, [])
 
   return (
     <section className="first-section relative flex min-h-screen w-full items-center justify-center">
@@ -67,18 +60,13 @@ export function HeroSection() {
         >
           <h1 className="heading-xl mb-6">
             <span className="block mb-2">Hi, I'm Seppe</span>
-            <DynamicGradientText className="leading-tight">
-              Blending creativity and tech
-            </DynamicGradientText>
+            <DynamicGradientText className="leading-tight">Blending creativity and tech</DynamicGradientText>
           </h1>
           <p className="mt-6 text-xl text-muted-foreground font-light">
-            I design results-driven solutions that empower users and help
-            businesses scale.
+            I design results-driven solutions that empower users and help businesses scale.
           </p>
           <div className="mt-6 text-xl font-medium md:text-2xl lg:text-3xl">
-            <AnimatedText
-              texts={["Product Designer / UI UX Designer / UX Strategist"]}
-            />
+            <AnimatedText texts={animatedTexts} />
           </div>
         </motion.div>
 
@@ -99,9 +87,7 @@ export function HeroSection() {
           </span>
           <div
             className={`p-2 rounded-full transition-all duration-300 social-icon-neon overflow-hidden group ${
-              theme === "light"
-                ? "bg-white/70 backdrop-blur-sm shadow-sm"
-                : "bg-white/5 backdrop-blur-sm"
+              theme === "light" ? "bg-white/70 backdrop-blur-sm shadow-sm" : "bg-white/5 backdrop-blur-sm"
             }`}
           >
             <motion.div
@@ -126,5 +112,5 @@ export function HeroSection() {
         </motion.button>
       </div>
     </section>
-  );
+  )
 }

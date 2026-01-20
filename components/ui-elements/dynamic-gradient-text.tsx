@@ -28,13 +28,19 @@ export function DynamicGradientText({ children, className = "" }: DynamicGradien
                 {word}{" "}
               </span>
             )
+          } else if (word === "and") {
+            return (
+              <span key={index} className="text-foreground">
+                {word}{" "}
+              </span>
+            )
           } else if (word === "with") {
             return (
               <span key={index} className="text-foreground">
                 {word}{" "}
               </span>
             )
-          } else if (word === "AI" || word === "power") {
+          } else if (word === "AI" || word === "power" || word === "tech") {
             return (
               <span key={index} className="neon-gradient-text">
                 {word}

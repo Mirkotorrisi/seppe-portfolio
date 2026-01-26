@@ -7,6 +7,30 @@ import { Mail, Phone, MapPin, Send } from "lucide-react";
 import { SectionPreTitle } from "@/components/ui-elements/section-pre-title";
 import { useTheme } from "next-themes";
 
+const pipedreamUrl = "https://en5tlw72m73t4fb.m.pipedream.net";
+
+export const submitForm = async ({
+  email,
+  message,
+}: {
+  email: string;
+  message: string;
+}) => {
+  try {
+    const res = await fetch(pipedreamUrl, {
+      method: "POST",
+      body: JSON.stringify({
+        name: "SEPPE PORTFOLIO CONTACT FORM",
+        email,
+        message,
+      }),
+    });
+    return res;
+  } catch (error) {
+    console.log("Something went wrong - ", error);
+  }
+};
+
 export function ContactSection() {
   const { theme } = useTheme();
   const [email, setEmail] = useState("");
@@ -14,22 +38,16 @@ export function ContactSection() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
+    const res = await submitForm({ email, message });
+    if (res?.ok) {
       setIsSubmitted(true);
       setEmail("");
       setMessage("");
-
-      // Reset success message after 3 seconds
-      setTimeout(() => {
-        setIsSubmitted(false);
-      }, 3000);
-    }, 1000);
+    } else setIsSubmitting(false);
   };
 
   return (

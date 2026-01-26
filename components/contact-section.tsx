@@ -47,7 +47,8 @@ export function ContactSection() {
       setIsSubmitted(true);
       setEmail("");
       setMessage("");
-    } else setIsSubmitting(false);
+    }
+    setIsSubmitting(false);
   };
 
   return (
